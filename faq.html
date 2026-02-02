@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>常见问题 | FAQ</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="faq.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 28V16L20 12L28 16V28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 20L20 24L28 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="16" r="2" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">ServiceHub</span>
+      </a>
+
+      <div class="nav-actions">
+        <div class="language-switcher">
+          <button class="lang-btn" id="langToggle">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span data-i18n="lang">中文</span>
+            <svg class="icon icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown">
+            <button class="lang-option active" data-lang="zh">中文</button>
+            <button class="lang-option" data-lang="en">English</button>
+            <button class="lang-option" data-lang="ja">日本語</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="faq-page">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" data-i18n="breadcrumbHome">首页</a>
+        <svg class="breadcrumb-separator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+        <span data-i18n="breadcrumbFaq">常见问题</span>
+      </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="faq-hero">
+      <div class="faq-hero-container">
+        <div class="faq-hero-icon">
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="1.5">
+            <circle cx="32" cy="32" r="28" stroke="#64748B"/>
+            <path d="M24 24a8 8 0 0 1 15 4c0 4-7 6-7 10" stroke="#0066FF"/>
+            <circle cx="32" cy="46" r="2" fill="#0066FF"/>
+          </svg>
+        </div>
+        <h1 class="faq-hero-title" data-i18n="faqHeroTitle">常见问题</h1>
+        <p class="faq-hero-subtitle" data-i18n="faqHeroSubtitle">
+          快速找到您需要的答案，解决常见问题
+        </p>
+
+        <!-- Search Box -->
+        <div class="faq-search">
+          <div class="faq-search-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <input
+              type="text"
+              class="faq-search-input"
+              placeholder="搜索问题..."
+              data-i18n-placeholder="searchPlaceholder"
+              id="faqSearch"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Content -->
+    <section class="faq-content">
+      <div class="faq-container">
+        <!-- Category Tabs -->
+        <div class="faq-categories">
+          <button class="category-tab active" data-category="all">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" stroke="#64748B" fill="#EFF6FF"/>
+              <rect x="14" y="3" width="7" height="7" stroke="#0066FF" fill="#EFF6FF"/>
+              <rect x="14" y="14" width="7" height="7" stroke="#64748B" fill="#EFF6FF"/>
+              <rect x="3" y="14" width="7" height="7" stroke="#0066FF" fill="#EFF6FF"/>
+            </svg>
+            <span data-i18n="categoryAll">全部问题</span>
+          </button>
+          <button class="category-tab" data-category="activation">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" stroke="#64748B"/>
+              <path d="M9 12l2 2 4-4" stroke="#0066FF"/>
+            </svg>
+            <span data-i18n="categoryActivation">产品激活</span>
+          </button>
+          <button class="category-tab" data-category="warranty">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#64748B" fill="#EFF6FF"/>
+              <circle cx="12" cy="10" r="2" fill="#0066FF"/>
+            </svg>
+            <span data-i18n="categoryWarranty">保修服务</span>
+          </button>
+          <button class="category-tab" data-category="usage">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke-width="2">
+              <circle cx="12" cy="12" r="10" stroke="#64748B"/>
+              <path d="M12 16v-4" stroke="#0066FF"/>
+              <circle cx="12" cy="8" r="0.5" fill="#0066FF"/>
+            </svg>
+            <span data-i18n="categoryUsage">使用指南</span>
+          </button>
+        </div>
+
+        <!-- FAQ List -->
+        <div class="faq-list" id="faqList">
+          <!-- FAQ Item 1 -->
+          <div class="faq-item" data-category="activation">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">01</span>
+              <span class="question-text" data-i18n="q1">如何激活我的产品保修服务？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a1">
+                <p>激活产品保修服务非常简单，只需按以下步骤操作：</p>
+                <ol>
+                  <li>访问我们的售后服务中心首页</li>
+                  <li>找到您的产品并点击"激活售后服务"</li>
+                  <li>填写您的姓名、邮箱、国家和订单号码</li>
+                  <li>提交表单后，您将收到确认邮件</li>
+                </ol>
+                <p>激活成功后，您的产品将享受完整的保修服务。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 2 -->
+          <div class="faq-item" data-category="activation">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">02</span>
+              <span class="question-text" data-i18n="q2">在哪里可以找到我的订单号码？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a2">
+                <p>订单号码可以在以下位置找到：</p>
+                <ul>
+                  <li><strong>购买确认邮件</strong> - 查看购买时收到的确认邮件</li>
+                  <li><strong>电商平台订单页面</strong> - 登录您的Amazon、乐天或Yahoo账户，在订单历史中查找</li>
+                  <li><strong>发货单</strong> - 随产品一起寄送的发货单上会标注订单号</li>
+                </ul>
+                <p>不同平台的订单号格式略有不同，请确保输入完整的订单号。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 3 -->
+          <div class="faq-item" data-category="warranty">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">03</span>
+              <span class="question-text" data-i18n="q3">产品的保修期是多长时间？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a3">
+                <p>我们提供以下保修服务：</p>
+                <ul>
+                  <li><strong>标准保修</strong> - 自购买之日起12个月</li>
+                  <li><strong>延长保修</strong> - 激活售后服务可额外获得6个月延保</li>
+                  <li><strong>电池保修</strong> - 6个月（适用于含电池产品）</li>
+                </ul>
+                <p>保修范围包括制造缺陷和非人为损坏的故障。人为损坏、进水、未经授权的维修不在保修范围内。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 4 -->
+          <div class="faq-item" data-category="warranty">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">04</span>
+              <span class="question-text" data-i18n="q4">如何申请产品维修或更换？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a4">
+                <p>申请维修或更换的步骤：</p>
+                <ol>
+                  <li>联系我们的客服团队，描述产品问题</li>
+                  <li>提供订单号和产品激活信息</li>
+                  <li>根据客服指引，寄送产品或提供故障证明</li>
+                  <li>我们将在收到产品后5-7个工作日内完成检测</li>
+                  <li>确认保修范围后，进行维修或更换</li>
+                </ol>
+                <p>在保修期内的符合条件的维修是免费的。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 5 -->
+          <div class="faq-item" data-category="usage">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">05</span>
+              <span class="question-text" data-i18n="q5">如何下载产品的用户手册？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a5">
+                <p>下载用户手册的方法：</p>
+                <ol>
+                  <li>在首页找到您的产品</li>
+                  <li>点击"操作手册与视频"卡片</li>
+                  <li>在"User Manuals"部分找到需要的文档</li>
+                  <li>点击"预览"在线查看，或点击"下载"保存到本地</li>
+                </ol>
+                <p>我们提供PDF格式的完整用户手册和快速入门指南。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 6 -->
+          <div class="faq-item" data-category="usage">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">06</span>
+              <span class="question-text" data-i18n="q6">如何更新产品固件？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a6">
+                <p>固件更新步骤：</p>
+                <ol>
+                  <li>在产品页面的"Software & Firmware"部分下载最新固件</li>
+                  <li>确保产品电量充足（建议50%以上）</li>
+                  <li>将固件文件传输到产品或通过App推送更新</li>
+                  <li>等待更新完成，期间请勿断电或关机</li>
+                </ol>
+                <p>更新固件可以修复已知问题并带来新功能。建议保持固件为最新版本。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 7 -->
+          <div class="faq-item" data-category="usage">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">07</span>
+              <span class="question-text" data-i18n="q7">产品无法开机怎么办？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a7">
+                <p>请尝试以下故障排除步骤：</p>
+                <ol>
+                  <li><strong>检查电源</strong> - 确保电源适配器正常连接，指示灯亮起</li>
+                  <li><strong>长按电源键</strong> - 按住电源键10秒以上尝试强制开机</li>
+                  <li><strong>更换电源</strong> - 尝试使用其他兼容的电源适配器</li>
+                  <li><strong>等待充电</strong> - 如电池完全耗尽，充电30分钟后再尝试开机</li>
+                </ol>
+                <p>如以上步骤无法解决问题，请联系客服获取进一步支持。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 8 -->
+          <div class="faq-item" data-category="warranty">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">08</span>
+              <span class="question-text" data-i18n="q8">可以退货或换货吗？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a8">
+                <p>我们的退换货政策：</p>
+                <ul>
+                  <li><strong>7天无理由退货</strong> - 产品未拆封、未使用可全额退款</li>
+                  <li><strong>15天换货</strong> - 产品存在质量问题可申请换货</li>
+                  <li><strong>退货条件</strong> - 产品需保持原包装完好，配件齐全</li>
+                </ul>
+                <p>请注意：通过电商平台购买的产品，退换货需遵循相应平台的政策。建议先联系购买平台的客服处理。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 9 -->
+          <div class="faq-item" data-category="activation">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">09</span>
+              <span class="question-text" data-i18n="q9">激活时提示订单号无效怎么办？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a9">
+                <p>订单号无效的可能原因及解决方法：</p>
+                <ul>
+                  <li><strong>格式错误</strong> - 请检查订单号格式是否正确，包括连字符位置</li>
+                  <li><strong>输入错误</strong> - 仔细核对是否有数字或字母输入错误</li>
+                  <li><strong>平台不匹配</strong> - 确认选择了正确的购买平台</li>
+                  <li><strong>订单未完成</strong> - 确认订单已支付并发货</li>
+                </ul>
+                <p>如仍无法解决，请联系客服并提供订单截图，我们将协助您完成激活。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Item 10 -->
+          <div class="faq-item" data-category="usage">
+            <button class="faq-question" aria-expanded="false">
+              <span class="question-number">10</span>
+              <span class="question-text" data-i18n="q10">如何联系客服获取帮助？</span>
+              <svg class="question-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <div class="answer-content" data-i18n="a10">
+                <p>您可以通过以下方式联系我们的客服团队：</p>
+                <ul>
+                  <li><strong>在线客服</strong> - 点击页面右下角的客服图标，工作时间内即时响应</li>
+                  <li><strong>邮件支持</strong> - 发送邮件至 support@servicehub.com</li>
+                  <li><strong>电话热线</strong> - 400-XXX-XXXX（工作日 9:00-18:00）</li>
+                </ul>
+                <p>我们的客服团队支持中文、英语和日语服务。通常会在24小时内回复您的咨询。</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- No Results -->
+        <div class="faq-no-results" id="noResults" style="display: none;">
+          <div class="no-results-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+              <circle cx="24" cy="24" r="20" stroke="#64748B"/>
+              <path d="M18 18a6 6 0 0 1 11.25 3c0 3-5.25 4.5-5.25 7.5" stroke="#0066FF"/>
+              <circle cx="24" cy="35" r="1.5" fill="#0066FF"/>
+            </svg>
+          </div>
+          <h3 class="no-results-title" data-i18n="noResultsTitle">未找到相关问题</h3>
+          <p class="no-results-desc" data-i18n="noResultsDesc">请尝试其他关键词，或联系客服获取帮助</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta">
+      <div class="cta-container">
+        <div class="cta-content">
+          <div class="cta-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+              <path d="M44 34v4a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-4" stroke="#64748B"/>
+              <path d="M4 14v-4a4 4 0 0 1 4-4h32a4 4 0 0 1 4 4v4" stroke="#64748B"/>
+              <circle cx="24" cy="24" r="10" stroke="#0066FF" fill="#EFF6FF"/>
+              <path d="M24 20v4l3 3" stroke="#0066FF"/>
+            </svg>
+          </div>
+          <div class="cta-text">
+            <h2 class="cta-title" data-i18n="ctaTitle">没有找到您需要的答案？</h2>
+            <p class="cta-desc" data-i18n="ctaDesc">我们的客服团队随时准备为您提供帮助</p>
+          </div>
+        </div>
+        <div class="cta-actions">
+          <a href="#contact" class="cta-btn cta-btn-primary">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span data-i18n="ctaBtnChat">在线咨询</span>
+          </a>
+          <a href="mailto:support@servicehub.com" class="cta-btn cta-btn-secondary">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <span data-i18n="ctaBtnEmail">发送邮件</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">
+            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 28V16L20 12L28 16V28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 20L20 24L28 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="20" cy="16" r="2" fill="currentColor"/>
+            </svg>
+            <span class="logo-text">ServiceHub</span>
+          </a>
+          <p class="footer-desc" data-i18n="footerDesc">专业的售后服务平台，为您提供全方位的产品支持。</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">© 2024 ServiceHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="faq.js"></script>
+</body>
+</html>

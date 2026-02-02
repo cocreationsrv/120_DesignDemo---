@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>售后服务中心 | After-Sales Service Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link" data-i18n="skipLink">跳转到主要内容</a>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="主导航">
+    <div class="nav-container">
+      <a href="/" class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 28V16L20 12L28 16V28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 20L20 24L28 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="16" r="2" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">ServiceHub</span>
+      </a>
+
+      <div class="nav-actions">
+        <!-- Accessibility Controls -->
+        <div class="a11y-controls" role="group" aria-label="无障碍选项">
+          <button
+            type="button"
+            id="toggleLargeText"
+            class="a11y-btn"
+            aria-pressed="false"
+            aria-label="切换大字体模式"
+            title="大字体"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 7V4h16v3"/>
+              <path d="M9 20h6"/>
+              <path d="M12 4v16"/>
+            </svg>
+          </button>
+          <button
+            type="button"
+            id="toggleHighContrast"
+            class="a11y-btn"
+            aria-pressed="false"
+            aria-label="切换高对比度模式"
+            title="高对比度"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="language-switcher">
+          <button class="lang-btn" id="langToggle" aria-haspopup="listbox" aria-expanded="false" aria-label="选择语言">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span data-i18n="lang">中文</span>
+            <svg class="icon icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown" role="listbox" aria-label="语言选项">
+            <button class="lang-option active" data-lang="zh" role="option" tabindex="0">中文</button>
+            <button class="lang-option" data-lang="en" role="option" tabindex="0">English</button>
+            <button class="lang-option" data-lang="ja" role="option" tabindex="0">日本語</button>
+            <button class="lang-option" data-lang="ko" role="option" tabindex="0">한국어</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+
+  <!-- Hero Section -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1 id="hero-title" class="hero-title" data-i18n="heroTitle">售后服务中心</h1>
+        <p class="hero-subtitle" data-i18n="heroSubtitle">
+          我们致力于为您提供专业、高效的售后支持。<br>
+          查找您的产品，获取激活指南、操作手册和常见问题解答。
+        </p>
+
+        <div class="search-box" role="search">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.35-4.35"/>
+            </svg>
+            <input
+              type="text"
+              class="search-input"
+              placeholder="输入产品名称或型号..."
+              data-i18n-placeholder="searchPlaceholder"
+              id="productSearch"
+              aria-label="搜索产品"
+            >
+          </div>
+          <button class="search-btn" data-i18n="searchBtn" aria-label="搜索">
+            <span>搜索产品</span>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="search-hints">
+          <span data-i18n="popularSearch">热门搜索：</span>
+          <button class="hint-tag" data-search="Smart Speaker X1">Smart Speaker X1</button>
+          <button class="hint-tag" data-search="Home Camera Pro">Home Camera Pro</button>
+          <button class="hint-tag" data-search="WiFi Router R6">WiFi Router R6</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section">
+    <div class="products-container">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="productsTitle">选择您的产品</h2>
+        <p class="section-subtitle" data-i18n="productsSubtitle">
+          点击下方产品卡片，获取对应的售后服务支持
+        </p>
+      </div>
+
+      <div class="products-grid" id="productsGrid">
+        <!-- Product 1 -->
+        <div class="product-group" data-product="smart-speaker">
+          <div class="product-header">
+            <div class="product-icon-wrapper">
+              <svg class="product-icon" viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+                <rect x="12" y="6" width="24" height="36" rx="4" stroke="#64748B"/>
+                <circle cx="24" cy="20" r="6" stroke="#0066FF" fill="#EFF6FF"/>
+                <path d="M18 32h12" stroke="#64748B"/>
+                <path d="M20 36h8" stroke="#64748B"/>
+                <path d="M30 14a8 8 0 0 1 0 12" stroke="#0066FF" stroke-dasharray="2 2"/>
+                <path d="M34 11a12 12 0 0 1 0 18" stroke="#0066FF" stroke-dasharray="2 2" opacity="0.5"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Smart Speaker X1</h3>
+              <span class="product-model">Model: SPK-X1-2024</span>
+            </div>
+          </div>
+
+          <div class="service-cards">
+            <!-- Activation Card -->
+            <a href="activate.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="4" y="4" width="24" height="24" rx="4"/>
+                  <path d="M12 16l3 3 5-6"/>
+                  <circle cx="24" cy="8" r="4" fill="#0066FF" stroke="#0066FF"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="activateTitle">激活售后服务</h4>
+                <p class="card-desc" data-i18n="activateDesc">注册产品，激活保修和专属支持</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <!-- Manual Card -->
+            <a href="manuals.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M6 4h14l6 6v18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                  <path d="M20 4v6h6"/>
+                  <path d="M8 14h12"/>
+                  <path d="M8 18h12"/>
+                  <path d="M8 22h8"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="manualTitle">操作手册与视频</h4>
+                <p class="card-desc" data-i18n="manualDesc">下载使用指南和教学视频</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <!-- FAQ Card -->
+            <a href="faq.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="16" cy="16" r="12"/>
+                  <path d="M12 12a4 4 0 0 1 7.5 2c0 2-3.5 3-3.5 5"/>
+                  <circle cx="16" cy="23" r="1" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="faqTitle">常见问题</h4>
+                <p class="card-desc" data-i18n="faqDesc">快速找到问题的解决方案</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-group" data-product="camera">
+          <div class="product-header">
+            <div class="product-icon-wrapper">
+              <svg class="product-icon" viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+                <rect x="6" y="12" width="36" height="24" rx="4" stroke="#64748B"/>
+                <circle cx="24" cy="24" r="7" stroke="#0066FF" fill="#EFF6FF"/>
+                <circle cx="24" cy="24" r="3" stroke="#0066FF" fill="#0066FF" opacity="0.3"/>
+                <circle cx="36" cy="18" r="2" fill="#0066FF"/>
+                <path d="M12 12V8h8v4" stroke="#64748B"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Home Camera Pro</h3>
+              <span class="product-model">Model: CAM-PRO-2024</span>
+            </div>
+          </div>
+
+          <div class="service-cards">
+            <a href="activate.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="4" y="4" width="24" height="24" rx="4"/>
+                  <path d="M12 16l3 3 5-6"/>
+                  <circle cx="24" cy="8" r="4" fill="#0066FF" stroke="#0066FF"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="activateTitle">激活售后服务</h4>
+                <p class="card-desc" data-i18n="activateDesc">注册产品，激活保修和专属支持</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="manuals.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M6 4h14l6 6v18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                  <path d="M20 4v6h6"/>
+                  <path d="M8 14h12"/>
+                  <path d="M8 18h12"/>
+                  <path d="M8 22h8"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="manualTitle">操作手册与视频</h4>
+                <p class="card-desc" data-i18n="manualDesc">下载使用指南和教学视频</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="faq.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="16" cy="16" r="12"/>
+                  <path d="M12 12a4 4 0 0 1 7.5 2c0 2-3.5 3-3.5 5"/>
+                  <circle cx="16" cy="23" r="1" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="faqTitle">常见问题</h4>
+                <p class="card-desc" data-i18n="faqDesc">快速找到问题的解决方案</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-group" data-product="router">
+          <div class="product-header">
+            <div class="product-icon-wrapper">
+              <svg class="product-icon" viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+                <rect x="6" y="20" width="36" height="16" rx="3" stroke="#64748B"/>
+                <path d="M14 20v-4a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4" stroke="#64748B"/>
+                <circle cx="14" cy="28" r="2" fill="#0066FF"/>
+                <circle cx="22" cy="28" r="2" fill="#0066FF"/>
+                <path d="M30 26v4" stroke="#64748B"/>
+                <path d="M34 26v4" stroke="#64748B"/>
+                <path d="M38 26v4" stroke="#64748B"/>
+                <path d="M18 8l6-4 6 4" stroke="#0066FF" stroke-dasharray="2 2"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">WiFi Router R6</h3>
+              <span class="product-model">Model: RTR-R6-2024</span>
+            </div>
+          </div>
+
+          <div class="service-cards">
+            <a href="activate.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="4" y="4" width="24" height="24" rx="4"/>
+                  <path d="M12 16l3 3 5-6"/>
+                  <circle cx="24" cy="8" r="4" fill="#0066FF" stroke="#0066FF"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="activateTitle">激活售后服务</h4>
+                <p class="card-desc" data-i18n="activateDesc">注册产品，激活保修和专属支持</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="manuals.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M6 4h14l6 6v18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                  <path d="M20 4v6h6"/>
+                  <path d="M8 14h12"/>
+                  <path d="M8 18h12"/>
+                  <path d="M8 22h8"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="manualTitle">操作手册与视频</h4>
+                <p class="card-desc" data-i18n="manualDesc">下载使用指南和教学视频</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="faq.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="16" cy="16" r="12"/>
+                  <path d="M12 12a4 4 0 0 1 7.5 2c0 2-3.5 3-3.5 5"/>
+                  <circle cx="16" cy="23" r="1" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="faqTitle">常见问题</h4>
+                <p class="card-desc" data-i18n="faqDesc">快速找到问题的解决方案</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-group" data-product="earbuds">
+          <div class="product-header">
+            <div class="product-icon-wrapper">
+              <svg class="product-icon" viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+                <ellipse cx="16" cy="28" rx="6" ry="8" stroke="#64748B" fill="#EFF6FF"/>
+                <ellipse cx="32" cy="28" rx="6" ry="8" stroke="#64748B" fill="#EFF6FF"/>
+                <path d="M16 20c0-6 4-10 8-10s8 4 8 10" stroke="#0066FF"/>
+                <circle cx="16" cy="28" r="2" fill="#0066FF"/>
+                <circle cx="32" cy="28" r="2" fill="#0066FF"/>
+                <path d="M10 26a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2" stroke="#64748B"/>
+                <path d="M38 26a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2" stroke="#64748B"/>
+              </svg>
+            </div>
+            <div class="product-info">
+              <h3 class="product-name">Wireless Earbuds E3</h3>
+              <span class="product-model">Model: EBD-E3-2024</span>
+            </div>
+          </div>
+
+          <div class="service-cards">
+            <a href="activate.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="4" y="4" width="24" height="24" rx="4"/>
+                  <path d="M12 16l3 3 5-6"/>
+                  <circle cx="24" cy="8" r="4" fill="#0066FF" stroke="#0066FF"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="activateTitle">激活售后服务</h4>
+                <p class="card-desc" data-i18n="activateDesc">注册产品，激活保修和专属支持</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="manuals.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M6 4h14l6 6v18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                  <path d="M20 4v6h6"/>
+                  <path d="M8 14h12"/>
+                  <path d="M8 18h12"/>
+                  <path d="M8 22h8"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="manualTitle">操作手册与视频</h4>
+                <p class="card-desc" data-i18n="manualDesc">下载使用指南和教学视频</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="faq.html" class="service-card">
+              <div class="card-icon">
+                <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="16" cy="16" r="12"/>
+                  <path d="M12 12a4 4 0 0 1 7.5 2c0 2-3.5 3-3.5 5"/>
+                  <circle cx="16" cy="23" r="1" fill="currentColor"/>
+                </svg>
+              </div>
+              <div class="card-content">
+                <h4 class="card-title" data-i18n="faqTitle">常见问题</h4>
+                <p class="card-desc" data-i18n="faqDesc">快速找到问题的解决方案</p>
+              </div>
+              <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 28V16L20 12L28 16V28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 20L20 24L28 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="20" cy="16" r="2" fill="currentColor"/>
+            </svg>
+            <span class="logo-text">ServiceHub</span>
+          </a>
+          <p class="footer-desc" data-i18n="footerDesc">
+            专业的售后服务平台，为您提供全方位的产品支持。
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footerSupport">支持</h4>
+            <ul>
+              <li><a href="#" data-i18n="footerContact">联系我们</a></li>
+              <li><a href="#" data-i18n="footerWarranty">保修政策</a></li>
+              <li><a href="#" data-i18n="footerReturn">退换货说明</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footerCompany">公司</h4>
+            <ul>
+              <li><a href="#" data-i18n="footerAbout">关于我们</a></li>
+              <li><a href="#" data-i18n="footerCareers">加入我们</a></li>
+              <li><a href="#" data-i18n="footerNews">新闻中心</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title" data-i18n="footerLegal">法律</h4>
+            <ul>
+              <li><a href="#" data-i18n="footerPrivacy">隐私政策</a></li>
+              <li><a href="#" data-i18n="footerTerms">使用条款</a></li>
+              <li><a href="#" data-i18n="footerCookie">Cookie 设置</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright">&copy; 2024 ServiceHub. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

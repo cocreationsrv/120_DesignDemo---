@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>操作手册与视频 | Manuals & Videos</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="manuals.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 28V16L20 12L28 16V28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 20L20 24L28 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="16" r="2" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">ServiceHub</span>
+      </a>
+
+      <div class="nav-actions">
+        <div class="language-switcher">
+          <button class="lang-btn" id="langToggle">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span data-i18n="lang">中文</span>
+            <svg class="icon icon-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown">
+            <button class="lang-option active" data-lang="zh">中文</button>
+            <button class="lang-option" data-lang="en">English</button>
+            <button class="lang-option" data-lang="ja">日本語</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="manuals-page">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html" data-i18n="breadcrumbHome">首页</a>
+        <svg class="breadcrumb-separator" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+        <span data-i18n="breadcrumbManuals">操作手册与视频</span>
+      </nav>
+    </div>
+
+    <!-- Product Hero Section -->
+    <section class="product-hero">
+      <div class="product-hero-container">
+        <div class="product-hero-content">
+          <div class="product-badge" data-i18n="productBadge">产品支持</div>
+          <h1 class="product-hero-title">Smart Speaker X1</h1>
+          <p class="product-hero-model">Model: SPK-X1-2024</p>
+          <p class="product-hero-desc" data-i18n="productDesc">
+            查看产品手册、下载最新固件，观看使用教程视频
+          </p>
+        </div>
+        <div class="product-hero-image">
+          <div class="product-image-wrapper">
+            <svg class="product-image" viewBox="0 0 200 200" fill="none" stroke-width="1">
+              <!-- Speaker body -->
+              <rect x="50" y="20" width="100" height="160" rx="16" stroke="#64748B" stroke-width="2"/>
+              <!-- Speaker grille pattern -->
+              <circle cx="100" cy="80" r="30" stroke="#0066FF" stroke-width="2"/>
+              <circle cx="100" cy="80" r="20" stroke="#0066FF" stroke-width="1.5"/>
+              <circle cx="100" cy="80" r="10" fill="#EFF6FF"/>
+              <!-- Control area -->
+              <line x1="70" y1="130" x2="130" y2="130" stroke="#64748B" stroke-width="2"/>
+              <line x1="75" y1="145" x2="125" y2="145" stroke="#64748B" stroke-width="1.5"/>
+              <line x1="80" y1="160" x2="120" y2="160" stroke="#64748B" stroke-width="1.5"/>
+              <!-- Sound waves -->
+              <path d="M155 60 Q170 80 155 100" stroke="#0066FF" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <path d="M165 50 Q185 80 165 110" stroke="#0066FF" stroke-width="1.5" stroke-dasharray="4 3"/>
+              <!-- Status indicator -->
+              <circle cx="100" cy="35" r="4" fill="#22C55E"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Sections -->
+    <div class="content-wrapper">
+      <!-- User Manuals Section -->
+      <section class="content-section" id="manuals">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5">
+              <path d="M4 4h10l2 2h12a2 2 0 0 1 2 2v18a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="#64748B"/>
+              <path d="M10 14h12" stroke="#0066FF"/>
+              <path d="M10 18h12" stroke="#0066FF"/>
+              <path d="M10 22h8" stroke="#0066FF"/>
+            </svg>
+          </div>
+          <div class="section-title-group">
+            <h2 class="section-title" data-i18n="manualsTitle">User Manuals</h2>
+            <p class="section-desc" data-i18n="manualsDesc">下载产品使用手册和快速入门指南</p>
+          </div>
+        </div>
+
+        <div class="manuals-grid">
+          <!-- Manual Card 1 -->
+          <div class="manual-card">
+            <div class="manual-preview">
+              <div class="manual-preview-content">
+                <svg class="manual-icon" viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+                  <path d="M8 6h20l8 8v28a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke="#64748B"/>
+                  <path d="M28 6v8h8" stroke="#64748B"/>
+                  <path d="M12 20h20" stroke="#0066FF"/>
+                  <path d="M12 26h20" stroke="#0066FF"/>
+                  <path d="M12 32h14" stroke="#0066FF"/>
+                </svg>
+                <span class="manual-type">PDF</span>
+              </div>
+            </div>
+            <div class="manual-info">
+              <h3 class="manual-name" data-i18n="manual1Name">用户操作手册</h3>
+              <p class="manual-meta">
+                <span data-i18n="manual1Version">V2.1</span>
+                <span class="meta-separator">•</span>
+                <span>12.5 MB</span>
+                <span class="meta-separator">•</span>
+                <span data-i18n="manual1Date">2024-01</span>
+              </p>
+              <p class="manual-desc" data-i18n="manual1Desc">完整的产品使用说明，包含安装、配置和故障排除指南</p>
+            </div>
+            <div class="manual-actions">
+              <button class="preview-btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span data-i18n="previewBtn">预览</span>
+              </button>
+              <button class="download-btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span data-i18n="downloadBtn">下载</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Manual Card 2 -->
+          <div class="manual-card">
+            <div class="manual-preview">
+              <div class="manual-preview-content">
+                <svg class="manual-icon" viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+                  <path d="M8 6h20l8 8v28a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z" stroke="#64748B"/>
+                  <path d="M28 6v8h8" stroke="#64748B"/>
+                  <circle cx="24" cy="28" r="8" stroke="#0066FF" fill="#EFF6FF"/>
+                  <path d="M21 28l2 2 4-4" stroke="#0066FF"/>
+                </svg>
+                <span class="manual-type">PDF</span>
+              </div>
+            </div>
+            <div class="manual-info">
+              <h3 class="manual-name" data-i18n="manual2Name">快速入门指南</h3>
+              <p class="manual-meta">
+                <span data-i18n="manual2Version">V1.0</span>
+                <span class="meta-separator">•</span>
+                <span>2.8 MB</span>
+                <span class="meta-separator">•</span>
+                <span data-i18n="manual2Date">2024-01</span>
+              </p>
+              <p class="manual-desc" data-i18n="manual2Desc">快速了解产品基本功能，10分钟完成首次设置</p>
+            </div>
+            <div class="manual-actions">
+              <button class="preview-btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <span data-i18n="previewBtn">预览</span>
+              </button>
+              <button class="download-btn">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span data-i18n="downloadBtn">下载</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Software & Firmware Section -->
+      <section class="content-section" id="firmware">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5">
+              <rect x="4" y="8" width="24" height="16" rx="2" stroke="#64748B"/>
+              <path d="M8 8V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2" stroke="#64748B"/>
+              <circle cx="16" cy="16" r="4" stroke="#0066FF" fill="#EFF6FF"/>
+              <path d="M16 12v-2" stroke="#0066FF"/>
+              <path d="M16 22v-2" stroke="#0066FF"/>
+              <path d="M12 16h-2" stroke="#0066FF"/>
+              <path d="M22 16h-2" stroke="#0066FF"/>
+            </svg>
+          </div>
+          <div class="section-title-group">
+            <h2 class="section-title" data-i18n="firmwareTitle">Software & Firmware</h2>
+            <p class="section-desc" data-i18n="firmwareDesc">下载最新的软件和固件升级包</p>
+          </div>
+        </div>
+
+        <div class="firmware-list">
+          <!-- Firmware Item -->
+          <div class="firmware-card">
+            <div class="firmware-icon">
+              <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5">
+                <rect x="6" y="4" width="20" height="24" rx="2" stroke="#64748B"/>
+                <path d="M10 12h12" stroke="#0066FF"/>
+                <path d="M10 16h8" stroke="#0066FF"/>
+                <circle cx="22" cy="24" r="6" fill="#22C55E" stroke="#22C55E"/>
+                <path d="M20 24h4M22 22v4" stroke="white" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="firmware-info">
+              <div class="firmware-header">
+                <h3 class="firmware-name" data-i18n="firmwareName">固件升级包</h3>
+                <span class="firmware-badge" data-i18n="latestBadge">最新</span>
+              </div>
+              <p class="firmware-version">Version 3.2.1</p>
+              <p class="firmware-meta">
+                <span>45.2 MB</span>
+                <span class="meta-separator">•</span>
+                <span data-i18n="firmwareDate">发布日期: 2024-01-15</span>
+              </p>
+              <div class="firmware-changelog">
+                <p class="changelog-title" data-i18n="changelogTitle">更新内容:</p>
+                <ul class="changelog-list">
+                  <li data-i18n="changelog1">修复蓝牙连接稳定性问题</li>
+                  <li data-i18n="changelog2">新增语音助手快捷指令</li>
+                  <li data-i18n="changelog3">优化音频输出质量</li>
+                </ul>
+              </div>
+            </div>
+            <div class="firmware-action">
+              <button class="download-btn download-btn-primary">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span data-i18n="downloadFirmware">下载固件</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Tutorials Section -->
+      <section class="content-section" id="videos">
+        <div class="section-header">
+          <div class="section-icon">
+            <svg viewBox="0 0 32 32" fill="none" stroke-width="1.5">
+              <rect x="2" y="6" width="28" height="20" rx="3" stroke="#64748B"/>
+              <polygon points="13,11 13,21 22,16" fill="#0066FF"/>
+            </svg>
+          </div>
+          <div class="section-title-group">
+            <h2 class="section-title" data-i18n="videosTitle">Video Tutorials</h2>
+            <p class="section-desc" data-i18n="videosDesc">观看产品使用教程视频</p>
+          </div>
+        </div>
+
+        <div class="video-grid">
+          <!-- Video Card -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <div class="video-preview">
+                <svg class="video-preview-icon" viewBox="0 0 120 80" fill="none">
+                  <!-- Video frame background -->
+                  <rect x="0" y="0" width="120" height="80" rx="4" fill="#F8FAFC"/>
+                  <!-- Speaker illustration -->
+                  <rect x="40" y="10" width="40" height="60" rx="6" stroke="#64748B" stroke-width="1.5" fill="none"/>
+                  <circle cx="60" cy="35" r="12" stroke="#0066FF" stroke-width="1.5" fill="#EFF6FF"/>
+                  <circle cx="60" cy="35" r="6" fill="#0066FF" opacity="0.3"/>
+                  <line x1="48" y1="55" x2="72" y2="55" stroke="#64748B" stroke-width="1.5"/>
+                  <!-- Sound waves -->
+                  <path d="M85 25 Q95 40 85 55" stroke="#0066FF" stroke-width="1" stroke-dasharray="3 2"/>
+                  <path d="M92 18 Q105 40 92 62" stroke="#0066FF" stroke-width="1" stroke-dasharray="3 2"/>
+                </svg>
+              </div>
+              <button class="video-play-btn">
+                <svg viewBox="0 0 48 48" fill="none">
+                  <circle cx="24" cy="24" r="23" fill="rgba(0,102,255,0.9)" stroke="white" stroke-width="2"/>
+                  <polygon points="20,16 20,32 34,24" fill="white"/>
+                </svg>
+              </button>
+              <span class="video-duration">5:32</span>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title" data-i18n="videoTitle">产品开箱与首次设置教程</h3>
+              <p class="video-desc" data-i18n="videoDesc">从开箱到完成配置，详细演示每一个步骤</p>
+              <div class="video-meta">
+                <span class="video-views">
+                  <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <span>12.5K</span>
+                </span>
+                <span class="video-date" data-i18n="videoDate">2024-01-10</span>
+              </div>
+            </div>
+            <button class="watch-btn">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5,3 19,12 5,21"/>
+              </svg>
+              <span data-i18n="watchBtn">点击观看</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Need Help Section -->
+      <section class="help-section">
+        <div class="help-content">
+          <div class="help-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5">
+              <circle cx="24" cy="24" r="20" stroke="#64748B"/>
+              <path d="M18 18a6 6 0 0 1 11.25 3c0 3-5.25 4.5-5.25 7.5" stroke="#0066FF"/>
+              <circle cx="24" cy="35" r="1.5" fill="#0066FF"/>
+            </svg>
+          </div>
+          <div class="help-text">
+            <h3 class="help-title" data-i18n="helpTitle">需要更多帮助?</h3>
+            <p class="help-desc" data-i18n="helpDesc">如果您有任何问题，请联系我们的客服团队</p>
+          </div>
+          <a href="#contact" class="help-btn">
+            <span data-i18n="contactBtn">联系客服</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">
+            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 28V16L20 12L28 16V28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 20L20 24L28 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="20" cy="16" r="2" fill="currentColor"/>
+            </svg>
+            <span class="logo-text">ServiceHub</span>
+          </a>
+          <p class="footer-desc" data-i18n="footerDesc">专业的售后服务平台，为您提供全方位的产品支持。</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">© 2024 ServiceHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="manuals.js"></script>
+</body>
+</html>
