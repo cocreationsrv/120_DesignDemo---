@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FFF5F7">
+  <title>后台管理 | Admin Dashboard</title>
+  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="admin.css?v=6">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 28V16L20 12L28 16V28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 20L20 24L28 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="16" r="2" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">ServiceHub</span>
+      </a>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="收起侧边栏">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <span class="nav-section-title">概览</span>
+        <a href="#" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          <span class="nav-label">仪表盘</span>
+        </a>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 20V10"/>
+            <path d="M18 20V4"/>
+            <path d="M6 20v-4"/>
+          </svg>
+          <span class="nav-label">数据分析</span>
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-section-title">售后管理</span>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span class="nav-label">客户管理</span>
+          <span class="nav-badge">128</span>
+        </a>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            <path d="M12 12v4"/>
+            <path d="M2 12h20"/>
+          </svg>
+          <span class="nav-label">订单记录</span>
+        </a>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <path d="M14 2v6h6"/>
+            <path d="M16 13H8"/>
+            <path d="M16 17H8"/>
+            <path d="M10 9H8"/>
+          </svg>
+          <span class="nav-label">服务工单</span>
+          <span class="nav-badge warning">5</span>
+        </a>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8"/>
+            <path d="M12 17v4"/>
+          </svg>
+          <span class="nav-label">产品管理</span>
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-section-title">系统</span>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span class="nav-label">系统设置</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item user-item">
+        <div class="user-avatar">
+          <span>A</span>
+        </div>
+        <div class="user-info">
+          <span class="user-name">Admin</span>
+          <span class="user-role">管理员</span>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="打开菜单">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+        <div class="breadcrumb">
+          <span>后台管理</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+          <span class="current">仪表盘</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Language Dropdown -->
+        <div class="admin-lang-dropdown" id="langDropdown">
+          <button class="admin-lang-toggle" id="langToggle" aria-label="切换语言">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="lang-code" id="currentLang">ZH</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="admin-lang-menu" id="langMenu">
+            <button class="admin-lang-item active" data-lang="zh">
+              <span class="lang-flag">🇨🇳</span>
+              <span class="lang-name">中文</span>
+              <span class="lang-native">简体中文</span>
+            </button>
+            <button class="admin-lang-item" data-lang="en">
+              <span class="lang-flag">🇺🇸</span>
+              <span class="lang-name">English</span>
+              <span class="lang-native">English</span>
+            </button>
+            <button class="admin-lang-item" data-lang="de">
+              <span class="lang-flag">🇩🇪</span>
+              <span class="lang-name">Deutsch</span>
+              <span class="lang-native">German</span>
+            </button>
+            <button class="admin-lang-item" data-lang="ja">
+              <span class="lang-flag">🇯🇵</span>
+              <span class="lang-name">日本語</span>
+              <span class="lang-native">Japanese</span>
+            </button>
+            <button class="admin-lang-item" data-lang="hi">
+              <span class="lang-flag">🇮🇳</span>
+              <span class="lang-name">हिन्दी</span>
+              <span class="lang-native">Hindi</span>
+            </button>
+            <button class="admin-lang-item" data-lang="fr">
+              <span class="lang-flag">🇫🇷</span>
+              <span class="lang-name">Français</span>
+              <span class="lang-native">French</span>
+            </button>
+            <button class="admin-lang-item" data-lang="it">
+              <span class="lang-flag">🇮🇹</span>
+              <span class="lang-name">Italiano</span>
+              <span class="lang-native">Italian</span>
+            </button>
+            <button class="admin-lang-item" data-lang="pt">
+              <span class="lang-flag">🇧🇷</span>
+              <span class="lang-name">Português</span>
+              <span class="lang-native">Portuguese</span>
+            </button>
+            <button class="admin-lang-item" data-lang="es">
+              <span class="lang-flag">🇪🇸</span>
+              <span class="lang-name">Español</span>
+              <span class="lang-native">Spanish</span>
+            </button>
+            <button class="admin-lang-item" data-lang="ko">
+              <span class="lang-flag">🇰🇷</span>
+              <span class="lang-name">한국어</span>
+              <span class="lang-native">Korean</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <!-- Pink theme icon -->
+          <svg class="icon-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/>
+            <path d="M12 20v2"/>
+            <path d="M4.93 4.93l1.41 1.41"/>
+            <path d="M17.66 17.66l1.41 1.41"/>
+            <path d="M2 12h2"/>
+            <path d="M20 12h2"/>
+            <path d="M6.34 17.66l-1.41 1.41"/>
+            <path d="M19.07 4.93l-1.41 1.41"/>
+          </svg>
+          <!-- Blue theme icon -->
+          <svg class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Notification -->
+        <button class="topbar-btn" aria-label="通知">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+          <span class="notification-dot"></span>
+        </button>
+
+        <!-- Help -->
+        <button class="topbar-btn" aria-label="帮助">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <path d="M12 17h.01"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="admin-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1 class="page-title">仪表盘</h1>
+          <p class="page-subtitle">欢迎回来，查看今日的售后服务概况</p>
+        </div>
+        <div class="page-header-right">
+          <button class="btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            导出报告
+          </button>
+          <button class="btn-primary-admin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12h14"/>
+            </svg>
+            新建工单
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">注册客户</span>
+            <span class="stat-value">1,284</span>
+            <span class="stat-change positive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+              </svg>
+              +12.5%
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">本月订单</span>
+            <span class="stat-value">356</span>
+            <span class="stat-change positive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+              </svg>
+              +8.2%
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <path d="M14 2v6h6"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">待处理工单</span>
+            <span class="stat-value">23</span>
+            <span class="stat-change negative">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+              -3.1%
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <path d="M22 4L12 14.01l-3-3"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">解决率</span>
+            <span class="stat-value">94.6%</span>
+            <span class="stat-change positive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+              </svg>
+              +2.4%
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid">
+        <!-- Recent Orders -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">最近注册</h2>
+            <a href="#" class="card-link">查看全部</a>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>客户</th>
+                  <th>订单号</th>
+                  <th>产品</th>
+                  <th>状态</th>
+                  <th>时间</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar">张</div>
+                      <div class="user-details">
+                        <span class="name">张三</span>
+                        <span class="email">zhang@example.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="order-number">250-1234567-1234567</td>
+                  <td>Smart Speaker X1</td>
+                  <td><span class="status-badge success">已激活</span></td>
+                  <td class="time">10 分钟前</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar">李</div>
+                      <div class="user-details">
+                        <span class="name">李四</span>
+                        <span class="email">li@example.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="order-number">111-7654321-7654321</td>
+                  <td>Home Camera Pro</td>
+                  <td><span class="status-badge success">已激活</span></td>
+                  <td class="time">25 分钟前</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar">王</div>
+                      <div class="user-details">
+                        <span class="name">王五</span>
+                        <span class="email">wang@example.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="order-number">302-9876543-9876543</td>
+                  <td>WiFi Router R6</td>
+                  <td><span class="status-badge pending">审核中</span></td>
+                  <td class="time">1 小时前</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar">赵</div>
+                      <div class="user-details">
+                        <span class="name">赵六</span>
+                        <span class="email">zhao@example.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="order-number">m12345678901</td>
+                  <td>Wireless Earbuds E3</td>
+                  <td><span class="status-badge success">已激活</span></td>
+                  <td class="time">2 小时前</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="user-cell">
+                      <div class="avatar">陈</div>
+                      <div class="user-details">
+                        <span class="name">陈七</span>
+                        <span class="email">chen@example.com</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="order-number">123456-20240101-1234</td>
+                  <td>Smart Speaker X1</td>
+                  <td><span class="status-badge error">已拒绝</span></td>
+                  <td class="time">3 小时前</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Service Tickets -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">待处理工单</h2>
+            <a href="#" class="card-link">查看全部</a>
+          </div>
+          <div class="ticket-list">
+            <div class="ticket-item">
+              <div class="ticket-priority high"></div>
+              <div class="ticket-content">
+                <div class="ticket-title">产品无法连接 WiFi</div>
+                <div class="ticket-meta">
+                  <span>Smart Speaker X1</span>
+                  <span>·</span>
+                  <span>张三</span>
+                </div>
+              </div>
+              <div class="ticket-time">5 分钟前</div>
+            </div>
+            <div class="ticket-item">
+              <div class="ticket-priority medium"></div>
+              <div class="ticket-content">
+                <div class="ticket-title">请求更换配件</div>
+                <div class="ticket-meta">
+                  <span>Home Camera Pro</span>
+                  <span>·</span>
+                  <span>李四</span>
+                </div>
+              </div>
+              <div class="ticket-time">15 分钟前</div>
+            </div>
+            <div class="ticket-item">
+              <div class="ticket-priority low"></div>
+              <div class="ticket-content">
+                <div class="ticket-title">如何重置设备</div>
+                <div class="ticket-meta">
+                  <span>WiFi Router R6</span>
+                  <span>·</span>
+                  <span>王五</span>
+                </div>
+              </div>
+              <div class="ticket-time">30 分钟前</div>
+            </div>
+            <div class="ticket-item">
+              <div class="ticket-priority high"></div>
+              <div class="ticket-content">
+                <div class="ticket-title">保修期内设备故障</div>
+                <div class="ticket-meta">
+                  <span>Wireless Earbuds E3</span>
+                  <span>·</span>
+                  <span>赵六</span>
+                </div>
+              </div>
+              <div class="ticket-time">1 小时前</div>
+            </div>
+            <div class="ticket-item">
+              <div class="ticket-priority medium"></div>
+              <div class="ticket-content">
+                <div class="ticket-title">订单号验证失败</div>
+                <div class="ticket-meta">
+                  <span>Smart Speaker X1</span>
+                  <span>·</span>
+                  <span>陈七</span>
+                </div>
+              </div>
+              <div class="ticket-time">2 小时前</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Sidebar toggle
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const menuToggle = document.getElementById('menuToggle');
+
+    sidebarToggle?.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    menuToggle?.addEventListener('click', () => {
+      sidebar.classList.toggle('mobile-open');
+    });
+
+    // Close sidebar on mobile when clicking outside
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 1024) {
+        if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+          sidebar.classList.remove('mobile-open');
+        }
+      }
+    });
+
+    // Active nav item
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        if (this.classList.contains('user-item')) return;
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // ========================================
+    // Theme Toggle (Pink / Blue)
+    // ========================================
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('admin-theme');
+    if (savedTheme === 'blue') {
+      body.classList.add('theme-blue');
+      themeColorMeta?.setAttribute('content', '#F0F7FF');
+    }
+
+    themeToggle?.addEventListener('click', () => {
+      body.classList.toggle('theme-blue');
+      const isBlue = body.classList.contains('theme-blue');
+
+      // Update theme-color meta
+      themeColorMeta?.setAttribute('content', isBlue ? '#F0F7FF' : '#FFF5F7');
+
+      // Save preference
+      localStorage.setItem('admin-theme', isBlue ? 'blue' : 'pink');
+    });
+
+    // ========================================
+    // Language Dropdown
+    // ========================================
+    const langDropdown = document.getElementById('langDropdown');
+    const langToggle = document.getElementById('langToggle');
+    const langMenu = document.getElementById('langMenu');
+    const currentLangDisplay = document.getElementById('currentLang');
+
+    // Load saved language
+    const savedLang = localStorage.getItem('admin-lang') || 'zh';
+    updateLanguageDisplay(savedLang);
+
+    langToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('open');
+    });
+
+    // Language menu items
+    langMenu?.querySelectorAll('.admin-lang-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const lang = this.dataset.lang;
+
+        // Update active state
+        langMenu.querySelectorAll('.admin-lang-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+
+        // Update display
+        updateLanguageDisplay(lang);
+
+        // Save preference
+        localStorage.setItem('admin-lang', lang);
+
+        // Close dropdown
+        langDropdown.classList.remove('open');
+      });
+    });
+
+    function updateLanguageDisplay(lang) {
+      currentLangDisplay.textContent = lang.toUpperCase();
+
+      // Update active state in menu
+      langMenu?.querySelectorAll('.admin-lang-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.lang === lang);
+      });
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!langDropdown?.contains(e.target)) {
+        langDropdown?.classList.remove('open');
+      }
+    });
+
+    // Close dropdown on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        langDropdown?.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
