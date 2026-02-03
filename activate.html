@@ -130,7 +130,7 @@
           <div class="step-line"></div>
           <div class="step" data-step="2">
             <div class="step-number">2</div>
-            <span class="step-label" data-i18n="stepVerify">安全验证</span>
+            <span class="step-label" data-i18n="stepConfirm">确认信息</span>
           </div>
           <div class="step-line"></div>
           <div class="step" data-step="3">
@@ -560,37 +560,44 @@
             </div>
           </div>
 
-          <!-- Step 2: Verification -->
+          <!-- Step 2: Confirmation -->
           <div class="form-step" data-form-step="2">
-            <div class="verification-section">
-              <div class="captcha-container">
-                <p class="captcha-label" data-i18n="captchaLabel">请完成安全验证</p>
-
-                <!-- Simulated CAPTCHA -->
-                <div class="captcha-box" id="captchaBox">
-                  <div class="captcha-checkbox">
-                    <input type="checkbox" id="captchaCheck">
-                    <label for="captchaCheck">
-                      <span class="checkbox-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                          <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                      </span>
-                      <span data-i18n="captchaText">我不是机器人</span>
-                    </label>
-                  </div>
-                  <div class="captcha-brand">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                    <span>reCAPTCHA</span>
-                  </div>
-                </div>
-
-                <p class="captcha-note" data-i18n="captchaNote">
-                  验证用于防止恶意提交，保护您的数据安全
-                </p>
+            <div class="confirmation-section">
+              <div class="confirmation-header">
+                <svg class="confirmation-icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                  <circle cx="24" cy="24" r="20" stroke="#0066FF" stroke-width="2" fill="#EFF6FF"/>
+                  <path d="M16 24l6 6 10-10" stroke="#0066FF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p class="confirmation-label" data-i18n="confirmLabel">请确认您的登录信息</p>
               </div>
+
+              <!-- Confirmation Details -->
+              <div class="confirmation-details" id="confirmationDetails">
+                <div class="confirm-item">
+                  <span class="confirm-label" data-i18n="labelName">姓名</span>
+                  <span class="confirm-value" id="confirmName">-</span>
+                </div>
+                <div class="confirm-item">
+                  <span class="confirm-label" data-i18n="labelEmail">邮件地址</span>
+                  <span class="confirm-value" id="confirmEmail">-</span>
+                </div>
+                <div class="confirm-item">
+                  <span class="confirm-label" data-i18n="labelCountry">国家/地区</span>
+                  <span class="confirm-value" id="confirmCountry">-</span>
+                </div>
+                <div class="confirm-item">
+                  <span class="confirm-label" data-i18n="labelPlatform">购买平台</span>
+                  <span class="confirm-value" id="confirmPlatform">-</span>
+                </div>
+                <div class="confirm-item">
+                  <span class="confirm-label" data-i18n="labelOrder">订单号码</span>
+                  <span class="confirm-value" id="confirmOrder">-</span>
+                </div>
+              </div>
+
+              <p class="confirmation-note" data-i18n="confirmNote">
+                请仔细核对以上信息，确认无误后点击"确认提交"完成注册。
+              </p>
             </div>
 
             <div class="form-actions">
@@ -600,8 +607,8 @@
                 </svg>
                 <span data-i18n="btnPrev">上一步</span>
               </button>
-              <button type="submit" class="btn btn-primary btn-submit" id="btnSubmit" disabled>
-                <span data-i18n="btnSubmit">提交注册</span>
+              <button type="submit" class="btn btn-primary btn-submit" id="btnSubmit">
+                <span data-i18n="btnSubmit">确认提交</span>
                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
@@ -642,10 +649,10 @@
               <div class="form-actions">
                 <a href="index.html" class="btn btn-primary">
                   <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                    <polyline points="9 22 9 12 15 12 15 22"/>
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
                   </svg>
-                  <span data-i18n="btnBackHome">返回首页</span>
+                  <span data-i18n="btnToService">前往售后服务中心</span>
                 </a>
               </div>
             </div>

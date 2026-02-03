@@ -141,11 +141,11 @@ const translations = {
     errorOrder: '订单号格式不正确',
     btnNext: '下一步',
     btnPrev: '上一步',
-    btnSubmit: '提交注册',
-    btnBackHome: '返回首页',
-    captchaLabel: '请完成安全验证',
-    captchaText: '我不是机器人',
-    captchaNote: '验证用于防止恶意提交，保护您的数据安全',
+    btnSubmit: '确认提交',
+    btnToService: '前往售后服务中心',
+    stepConfirm: '确认信息',
+    confirmLabel: '请确认您的登录信息',
+    confirmNote: '请仔细核对以上信息，确认无误后点击"确认提交"完成注册。',
     successTitle: '注册成功!',
     successMessage: '您的产品已成功激活售后服务。<br>确认邮件已发送至您的邮箱，请注意查收。',
     detailOrderLabel: '订单号',
@@ -186,11 +186,11 @@ const translations = {
     errorOrder: 'Invalid order number format',
     btnNext: 'Next',
     btnPrev: 'Back',
-    btnSubmit: 'Submit',
-    btnBackHome: 'Back to Home',
-    captchaLabel: 'Complete security verification',
-    captchaText: "I'm not a robot",
-    captchaNote: 'Verification protects against malicious submissions',
+    btnSubmit: 'Confirm & Submit',
+    btnToService: 'Go to Service Center',
+    stepConfirm: 'Confirm',
+    confirmLabel: 'Please confirm your information',
+    confirmNote: 'Please review the information above carefully. Click "Confirm & Submit" to complete registration.',
     successTitle: 'Registration Successful!',
     successMessage: 'Your product warranty has been activated.<br>A confirmation email has been sent to your inbox.',
     detailOrderLabel: 'Order Number',
@@ -231,11 +231,11 @@ const translations = {
     errorOrder: '注文番号の形式が正しくありません',
     btnNext: '次へ',
     btnPrev: '戻る',
-    btnSubmit: '登録する',
-    btnBackHome: 'ホームに戻る',
-    captchaLabel: 'セキュリティ認証を完了してください',
-    captchaText: '私はロボットではありません',
-    captchaNote: '悪意のある送信からデータを保護するための認証です',
+    btnSubmit: '確認して送信',
+    btnToService: 'サービスセンターへ',
+    stepConfirm: '確認',
+    confirmLabel: '入力内容をご確認ください',
+    confirmNote: '上記の情報をご確認の上、「確認して送信」をクリックして登録を完了してください。',
     successTitle: '登録完了!',
     successMessage: '製品のアフターサービスが有効になりました。<br>確認メールを送信しました。ご確認ください。',
     detailOrderLabel: '注文番号',
@@ -276,11 +276,11 @@ const translations = {
     errorOrder: '주문 번호 형식이 올바르지 않습니다',
     btnNext: '다음',
     btnPrev: '이전',
-    btnSubmit: '등록하기',
-    btnBackHome: '홈으로 돌아가기',
-    captchaLabel: '보안 인증을 완료하세요',
-    captchaText: '저는 로봇이 아닙니다',
-    captchaNote: '악의적인 제출로부터 데이터를 보호하기 위한 인증입니다',
+    btnSubmit: '확인 및 제출',
+    btnToService: '서비스 센터로 이동',
+    stepConfirm: '확인',
+    confirmLabel: '입력 정보를 확인해 주세요',
+    confirmNote: '위 정보를 확인하신 후 "확인 및 제출"을 클릭하여 등록을 완료하세요.',
     successTitle: '등록 완료!',
     successMessage: '제품의 A/S 서비스가 활성화되었습니다.<br>확인 이메일이 발송되었습니다.',
     detailOrderLabel: '주문 번호',
@@ -321,11 +321,11 @@ const translations = {
     errorOrder: 'Ungültiges Bestellnummernformat',
     btnNext: 'Weiter',
     btnPrev: 'Zurück',
-    btnSubmit: 'Absenden',
-    btnBackHome: 'Zur Startseite',
-    captchaLabel: 'Sicherheitsüberprüfung abschließen',
-    captchaText: 'Ich bin kein Roboter',
-    captchaNote: 'Verifizierung schützt vor böswilligen Eingaben',
+    btnSubmit: 'Bestätigen & Absenden',
+    btnToService: 'Zum Service-Center',
+    stepConfirm: 'Bestätigen',
+    confirmLabel: 'Bitte überprüfen Sie Ihre Angaben',
+    confirmNote: 'Bitte überprüfen Sie die obigen Informationen sorgfältig. Klicken Sie auf "Bestätigen & Absenden" um die Registrierung abzuschließen.',
     successTitle: 'Registrierung erfolgreich!',
     successMessage: 'Ihre Produktgarantie wurde aktiviert.<br>Eine Bestätigungs-E-Mail wurde gesendet.',
     detailOrderLabel: 'Bestellnummer',
@@ -366,11 +366,11 @@ const translations = {
     errorOrder: 'Format de numéro de commande invalide',
     btnNext: 'Suivant',
     btnPrev: 'Retour',
-    btnSubmit: 'Soumettre',
-    btnBackHome: 'Retour à l\'accueil',
-    captchaLabel: 'Complétez la vérification de sécurité',
-    captchaText: 'Je ne suis pas un robot',
-    captchaNote: 'La vérification protège contre les soumissions malveillantes',
+    btnSubmit: 'Confirmer et soumettre',
+    btnToService: 'Aller au centre de service',
+    stepConfirm: 'Confirmer',
+    confirmLabel: 'Veuillez vérifier vos informations',
+    confirmNote: 'Veuillez vérifier attentivement les informations ci-dessus. Cliquez sur "Confirmer et soumettre" pour terminer l\'inscription.',
     successTitle: 'Inscription réussie!',
     successMessage: 'La garantie de votre produit a été activée.<br>Un e-mail de confirmation a été envoyé.',
     detailOrderLabel: 'N° de commande',
@@ -411,11 +411,11 @@ const translations = {
     errorOrder: 'Formato de número de pedido inválido',
     btnNext: 'Siguiente',
     btnPrev: 'Atrás',
-    btnSubmit: 'Enviar',
-    btnBackHome: 'Volver al inicio',
-    captchaLabel: 'Complete la verificación de seguridad',
-    captchaText: 'No soy un robot',
-    captchaNote: 'La verificación protege contra envíos maliciosos',
+    btnSubmit: 'Confirmar y enviar',
+    btnToService: 'Ir al centro de servicio',
+    stepConfirm: 'Confirmar',
+    confirmLabel: 'Por favor verifique su información',
+    confirmNote: 'Por favor revise cuidadosamente la información anterior. Haga clic en "Confirmar y enviar" para completar el registro.',
     successTitle: '¡Registro exitoso!',
     successMessage: 'La garantía de su producto ha sido activada.<br>Se ha enviado un correo de confirmación.',
     detailOrderLabel: 'N° de pedido',
@@ -491,7 +491,6 @@ const formSteps = document.querySelectorAll('.form-step');
 const btnNext = document.getElementById('btnNext');
 const btnPrev = document.getElementById('btnPrev');
 const btnSubmit = document.getElementById('btnSubmit');
-const captchaCheck = document.getElementById('captchaCheck');
 
 // Input elements
 const nameInput = document.getElementById('customerName');
@@ -592,6 +591,22 @@ function goToStep(step) {
   currentStep = step;
   updateProgress();
 
+  // Fill confirmation details when going to Step 2
+  if (step === 2 && formData) {
+    document.getElementById('confirmName').textContent = formData.name;
+    document.getElementById('confirmEmail').textContent = formData.email;
+
+    // Get country display name
+    const countryOption = countrySelect.querySelector(`option[value="${formData.country}"]`);
+    document.getElementById('confirmCountry').textContent = countryOption ? countryOption.textContent : formData.country;
+
+    // Get platform display name
+    const platformLabel = document.querySelector(`input[value="${formData.platform}"]`)?.closest('.platform-option')?.querySelector('.platform-name');
+    document.getElementById('confirmPlatform').textContent = platformLabel ? platformLabel.textContent : formData.platform;
+
+    document.getElementById('confirmOrder').textContent = formData.orderNumber;
+  }
+
   // Scroll to top of form
   document.querySelector('.form-container').scrollIntoView({
     behavior: 'smooth',
@@ -680,16 +695,9 @@ function initEventListeners() {
     goToStep(1);
   });
 
-  // CAPTCHA checkbox
-  captchaCheck.addEventListener('change', () => {
-    btnSubmit.disabled = !captchaCheck.checked;
-  });
-
   // Form submission
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-
-    if (!captchaCheck.checked) return;
 
     // Show loading state
     btnSubmit.classList.add('loading');
