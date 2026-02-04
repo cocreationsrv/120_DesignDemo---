@@ -987,6 +987,7 @@
 @media (min-width: 1440px) {
   .admin-content {
     padding: var(--admin-space-10);
+    max-width: 1400px;
   }
 
   .stats-grid {
@@ -995,6 +996,10 @@
 
   .content-grid {
     gap: var(--admin-space-8);
+  }
+
+  .stat-value {
+    font-size: var(--admin-text-4xl);
   }
 }
 
@@ -1013,19 +1018,41 @@
   .admin-content {
     padding: var(--admin-space-6);
   }
+
+  .stat-value {
+    font-size: var(--admin-text-2xl);
+  }
 }
 
 /* --------------------------------------------------------------------------
    Responsive - Tablet Landscape (1024px)
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
+  /* Sidebar becomes overlay */
   .sidebar {
     transform: translateX(-100%);
+    box-shadow: none;
   }
 
   .sidebar.mobile-open {
     transform: translateX(0);
     box-shadow: var(--admin-shadow-lg);
+  }
+
+  /* Sidebar overlay backdrop */
+  .sidebar::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: -1;
+    pointer-events: none;
+    transition: background-color var(--admin-transition-normal);
+  }
+
+  .sidebar.mobile-open::before {
+    background-color: rgba(0, 0, 0, 0.45);
+    pointer-events: auto;
   }
 
   .admin-main {
@@ -1045,7 +1072,16 @@
   }
 
   .stat-value {
-    font-size: var(--admin-text-2xl);
+    font-size: var(--admin-text-xl);
+  }
+
+  /* Breadcrumb simplify */
+  .topbar .breadcrumb span:not(.current) {
+    display: none;
+  }
+
+  .topbar .breadcrumb svg {
+    display: none;
   }
 }
 
@@ -1053,7 +1089,7 @@
    Responsive - Tablet Portrait (768px)
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
-  :root {
+  .admin-body {
     --admin-topbar-height: 56px;
   }
 
@@ -1087,6 +1123,7 @@
   .page-header-right .btn-outline,
   .page-header-right .btn-primary-admin {
     flex: 1;
+    justify-content: center;
   }
 
   .stats-grid {
@@ -1099,24 +1136,30 @@
     padding: var(--admin-space-4);
     flex-direction: column;
     gap: var(--admin-space-3);
+    text-align: center;
   }
 
   .stat-icon {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
   }
 
   .stat-icon svg {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
 
   .stat-value {
-    font-size: var(--admin-text-xl);
+    font-size: var(--admin-text-2xl);
   }
 
   .stat-label {
     font-size: var(--admin-text-xs);
+  }
+
+  .stat-change {
+    justify-content: center;
   }
 
   .content-grid {
@@ -1164,6 +1207,16 @@
   .ticket-priority {
     height: 36px;
   }
+
+  /* Language dropdown responsive */
+  .admin-lang-toggle .lang-code {
+    display: none;
+  }
+
+  .admin-lang-menu {
+    right: 0;
+    min-width: 180px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -1182,6 +1235,18 @@
   .stat-card {
     flex-direction: row;
     align-items: center;
+    text-align: left;
+    padding: var(--admin-space-4);
+  }
+
+  .stat-icon {
+    margin: 0;
+    width: 44px;
+    height: 44px;
+  }
+
+  .stat-change {
+    justify-content: flex-start;
   }
 
   .page-header-right {
@@ -1208,10 +1273,36 @@
     height: 20px;
   }
 
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .admin-lang-toggle {
+    min-width: auto;
+    padding: 0 var(--admin-space-2);
+    width: 40px;
+    height: 40px;
+  }
+
+  .admin-lang-toggle .chevron {
+    display: none;
+  }
+
   /* Hide product column on small mobile */
   .data-table th:nth-child(3),
   .data-table td:nth-child(3) {
     display: none;
+  }
+
+  /* Simplify table */
+  .data-table th:nth-child(2),
+  .data-table td:nth-child(2) {
+    display: none;
+  }
+
+  .ticket-content {
+    max-width: calc(100vw - 140px);
   }
 }
 
@@ -1231,12 +1322,24 @@
     font-size: var(--admin-text-lg);
   }
 
+  .page-subtitle {
+    display: none;
+  }
+
   .stat-value {
     font-size: var(--admin-text-lg);
   }
 
+  .stat-label {
+    font-size: 0.6875rem;
+  }
+
   .card-header {
     padding: var(--admin-space-3) var(--admin-space-4);
+  }
+
+  .card-link {
+    font-size: var(--admin-text-xs);
   }
 
   .data-table th,
@@ -1245,9 +1348,21 @@
     font-size: var(--admin-text-xs);
   }
 
+  /* Show only customer and status on very small */
+  .data-table th:nth-child(5),
+  .data-table td:nth-child(5) {
+    display: none;
+  }
+
+  .status-badge {
+    padding: 2px 6px;
+    font-size: 0.625rem;
+  }
+
   .ticket-item {
     padding: var(--admin-space-3) var(--admin-space-4);
     gap: var(--admin-space-3);
+    min-height: 56px;
   }
 
   .ticket-title {
@@ -1258,10 +1373,98 @@
     font-size: 0.625rem;
   }
 
-  /* Hide time column on very small screens */
-  .data-table th:nth-child(5),
-  .data-table td:nth-child(5) {
+  .ticket-time {
+    font-size: 0.625rem;
+  }
+
+  .ticket-priority {
+    width: 3px;
+    height: 32px;
+  }
+
+  /* Hide help button on smallest screens */
+  .topbar-btn[aria-label="帮助"] {
     display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Extra Small (320px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 320px) {
+  .admin-content {
+    padding: var(--admin-space-2);
+  }
+
+  .topbar {
+    padding: 0 var(--admin-space-2);
+  }
+
+  .stats-grid {
+    gap: var(--admin-space-2);
+  }
+
+  .stat-card {
+    padding: var(--admin-space-3);
+  }
+
+  .card {
+    border-radius: var(--admin-radius-md);
+  }
+
+  .stat-card {
+    border-radius: var(--admin-radius-md);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Landscape Phone Optimization
+   -------------------------------------------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .admin-body {
+    --admin-topbar-height: 48px;
+  }
+
+  .topbar {
+    height: 48px;
+  }
+
+  .sidebar-header {
+    min-height: 48px;
+    padding: var(--admin-space-2) var(--admin-space-4);
+  }
+
+  .nav-item {
+    padding: var(--admin-space-2) var(--admin-space-4);
+    min-height: 40px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stat-card {
+    padding: var(--admin-space-3);
+    flex-direction: row;
+  }
+
+  .stat-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .stat-value {
+    font-size: var(--admin-text-lg);
+  }
+
+  .page-header {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .page-header-right {
+    width: auto;
+    flex-direction: row;
   }
 }
 
@@ -1280,6 +1483,15 @@
 
   .menu-toggle {
     min-width: 48px;
+    min-height: 48px;
+  }
+
+  .theme-toggle {
+    min-width: 48px;
+    min-height: 48px;
+  }
+
+  .admin-lang-toggle {
     min-height: 48px;
   }
 
@@ -1389,6 +1601,521 @@
 .large-text .btn-primary-admin {
   height: 52px;
   padding: 0 var(--admin-space-6);
+}
+
+/* ==========================================================================
+   Pink Theme Animations & Micro-interactions
+   ========================================================================== */
+
+/* Keyframe Animations */
+@keyframes pinkPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 138, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 107, 138, 0);
+  }
+}
+
+@keyframes pinkGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 107, 138, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 107, 138, 0.5);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: var(--admin-pink-200);
+  }
+  50% {
+    border-color: var(--admin-pink-400);
+  }
+}
+
+@keyframes notificationPing {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Notification Dot Animation
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .notification-dot {
+  animation: pinkPulse 2s ease-in-out infinite;
+}
+
+.admin-body:not(.theme-blue) .notification-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: var(--admin-pink-500);
+  animation: notificationPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Stat Cards Animation
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .stat-card {
+  animation: fadeInUp 0.5s ease-out both;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .stat-card:nth-child(1) { animation-delay: 0.1s; }
+.admin-body:not(.theme-blue) .stat-card:nth-child(2) { animation-delay: 0.2s; }
+.admin-body:not(.theme-blue) .stat-card:nth-child(3) { animation-delay: 0.3s; }
+.admin-body:not(.theme-blue) .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+.admin-body:not(.theme-blue) .stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px -8px rgba(255, 107, 138, 0.25);
+  border-color: var(--admin-pink-300);
+}
+
+.admin-body:not(.theme-blue) .stat-card:hover .stat-icon {
+  animation: float 2s ease-in-out infinite;
+}
+
+.admin-body:not(.theme-blue) .stat-icon {
+  transition: all 0.3s ease;
+}
+
+.admin-body:not(.theme-blue) .stat-card:hover .stat-icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 107, 138, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Navigation Animation
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .nav-item {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  background: linear-gradient(180deg, var(--admin-pink-400), var(--admin-pink-600));
+  border-radius: 0 2px 2px 0;
+  transform: translateY(-50%);
+  transition: height 0.25s ease;
+}
+
+.admin-body:not(.theme-blue) .nav-item:hover::before {
+  height: 60%;
+}
+
+.admin-body:not(.theme-blue) .nav-item.active::before {
+  height: 70%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));
+}
+
+.admin-body:not(.theme-blue) .nav-item:hover {
+  padding-left: calc(var(--admin-space-5) + 4px);
+}
+
+.admin-body:not(.theme-blue) .nav-item:hover .nav-icon {
+  color: var(--admin-pink-500);
+  transform: scale(1.1);
+}
+
+.admin-body:not(.theme-blue) .nav-icon {
+  transition: all 0.25s ease;
+}
+
+.admin-body:not(.theme-blue) .nav-badge {
+  transition: all 0.25s ease;
+}
+
+.admin-body:not(.theme-blue) .nav-item:hover .nav-badge {
+  transform: scale(1.1);
+  background-color: var(--admin-pink-200);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Button Animations
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .btn-primary-admin {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .btn-primary-admin::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.admin-body:not(.theme-blue) .btn-primary-admin:hover::before {
+  left: 100%;
+}
+
+.admin-body:not(.theme-blue) .btn-primary-admin:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 107, 138, 0.4);
+}
+
+.admin-body:not(.theme-blue) .btn-primary-admin:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 2px 8px rgba(255, 107, 138, 0.3);
+}
+
+.admin-body:not(.theme-blue) .btn-outline {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .btn-outline:hover {
+  border-color: var(--admin-pink-400);
+  color: var(--admin-pink-600);
+  background-color: var(--admin-pink-50);
+  transform: translateY(-1px);
+}
+
+.admin-body:not(.theme-blue) .btn-outline:hover svg {
+  color: var(--admin-pink-500);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Card Animations
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .card {
+  animation: scaleIn 0.4s ease-out both;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .content-grid .card:nth-child(1) { animation-delay: 0.3s; }
+.admin-body:not(.theme-blue) .content-grid .card:nth-child(2) { animation-delay: 0.4s; }
+
+.admin-body:not(.theme-blue) .card:hover {
+  box-shadow: 0 8px 24px -6px rgba(255, 107, 138, 0.2);
+}
+
+.admin-body:not(.theme-blue) .card-link {
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.admin-body:not(.theme-blue) .card-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--admin-pink-400), var(--admin-pink-600));
+  border-radius: 1px;
+  transition: width 0.25s ease;
+}
+
+.admin-body:not(.theme-blue) .card-link:hover::after {
+  width: 100%;
+}
+
+.admin-body:not(.theme-blue) .card-link:hover {
+  color: var(--admin-pink-600);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Table Row Animations
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .data-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.admin-body:not(.theme-blue) .data-table tbody tr:hover {
+  background-color: var(--admin-pink-50);
+  transform: scale(1.005);
+}
+
+.admin-body:not(.theme-blue) .data-table tbody tr:hover .avatar {
+  transform: scale(1.1);
+  box-shadow: 0 2px 8px rgba(255, 107, 138, 0.3);
+}
+
+.admin-body:not(.theme-blue) .avatar {
+  transition: all 0.25s ease;
+}
+
+.admin-body:not(.theme-blue) .status-badge {
+  transition: all 0.25s ease;
+}
+
+.admin-body:not(.theme-blue) .data-table tbody tr:hover .status-badge {
+  transform: scale(1.05);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Ticket Animations
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .ticket-item {
+  animation: slideInRight 0.4s ease-out both;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .ticket-item:nth-child(1) { animation-delay: 0.35s; }
+.admin-body:not(.theme-blue) .ticket-item:nth-child(2) { animation-delay: 0.4s; }
+.admin-body:not(.theme-blue) .ticket-item:nth-child(3) { animation-delay: 0.45s; }
+.admin-body:not(.theme-blue) .ticket-item:nth-child(4) { animation-delay: 0.5s; }
+.admin-body:not(.theme-blue) .ticket-item:nth-child(5) { animation-delay: 0.55s; }
+
+.admin-body:not(.theme-blue) .ticket-item:hover {
+  background-color: var(--admin-pink-50);
+  padding-left: calc(var(--admin-space-6) + 4px);
+}
+
+.admin-body:not(.theme-blue) .ticket-priority {
+  transition: all 0.25s ease;
+}
+
+.admin-body:not(.theme-blue) .ticket-item:hover .ticket-priority {
+  height: 50px;
+  box-shadow: 0 0 8px rgba(255, 107, 138, 0.4);
+}
+
+.admin-body:not(.theme-blue) .ticket-priority.high {
+  animation: pinkGlow 2s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Topbar Animations
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .topbar-btn {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .topbar-btn:hover {
+  background-color: var(--admin-pink-100);
+  color: var(--admin-pink-600);
+  transform: scale(1.05);
+}
+
+.admin-body:not(.theme-blue) .topbar-btn:hover svg {
+  animation: heartbeat 0.6s ease-in-out;
+}
+
+.admin-body:not(.theme-blue) .topbar-btn:active {
+  transform: scale(0.95);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Theme Toggle Animation
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .theme-toggle:hover {
+  background-color: var(--admin-pink-100);
+}
+
+.admin-body:not(.theme-blue) .theme-toggle:hover svg {
+  animation: float 1s ease-in-out infinite;
+  color: var(--admin-pink-500);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Language Dropdown Animation
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .admin-lang-toggle {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .admin-lang-toggle:hover {
+  border-color: var(--admin-pink-400);
+  background-color: var(--admin-pink-50);
+  box-shadow: 0 2px 8px rgba(255, 107, 138, 0.15);
+}
+
+.admin-body:not(.theme-blue) .admin-lang-menu {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.admin-body:not(.theme-blue) .admin-lang-dropdown.open .admin-lang-menu {
+  box-shadow: 0 12px 32px rgba(255, 107, 138, 0.2);
+}
+
+.admin-body:not(.theme-blue) .admin-lang-item {
+  transition: all 0.2s ease;
+}
+
+.admin-body:not(.theme-blue) .admin-lang-item:hover {
+  background-color: var(--admin-pink-50);
+  padding-left: calc(var(--admin-space-4) + 4px);
+}
+
+.admin-body:not(.theme-blue) .admin-lang-item.active {
+  background: linear-gradient(90deg, var(--admin-pink-100), var(--admin-pink-50));
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Sidebar Animation
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .sidebar-logo .logo-icon {
+  transition: all 0.3s ease;
+}
+
+.admin-body:not(.theme-blue) .sidebar-header:hover .logo-icon {
+  transform: rotate(-5deg) scale(1.05);
+  filter: drop-shadow(0 2px 4px rgba(255, 107, 138, 0.3));
+}
+
+.admin-body:not(.theme-blue) .user-avatar {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.admin-body:not(.theme-blue) .user-item:hover .user-avatar {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 107, 138, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Page Title Animation
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .page-title {
+  animation: fadeInUp 0.5s ease-out both;
+  background: linear-gradient(135deg, var(--admin-text) 0%, var(--admin-pink-700) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.admin-body:not(.theme-blue) .page-subtitle {
+  animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Scrollbar Hover Effect
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .sidebar-nav::-webkit-scrollbar-thumb:hover {
+  background-color: var(--admin-pink-400);
+}
+
+.admin-body:not(.theme-blue) .table-container::-webkit-scrollbar-thumb:hover {
+  background-color: var(--admin-pink-400);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Focus Ring Animation
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) *:focus-visible {
+  outline: 2px solid var(--admin-pink-400);
+  outline-offset: 2px;
+  animation: pinkPulse 1.5s ease-in-out infinite;
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme - Loading Shimmer (utility class)
+   -------------------------------------------------------------------------- */
+.admin-body:not(.theme-blue) .shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    var(--admin-pink-50) 0%,
+    var(--admin-pink-100) 50%,
+    var(--admin-pink-50) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
 }
 
 /* --------------------------------------------------------------------------
