@@ -1,0 +1,1468 @@
+/* ==========================================================================
+   Dashboard Styles
+   Theme-aware styling for charts, maps, and analytics
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Dashboard Layout - Full Screen Fill
+   -------------------------------------------------------------------------- */
+.dashboard-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  width: 100%;
+  min-height: calc(100vh - var(--admin-topbar-height));
+}
+
+.dashboard-content .page-header {
+  flex-shrink: 0;
+}
+
+.dashboard-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(auto, 1fr);
+  gap: var(--admin-space-6);
+  align-content: start;
+}
+
+/* Card Sizing - Map and Product Distribution side by side */
+.card-map { grid-column: span 8; min-height: 420px; }
+.card-donut { grid-column: span 4; min-height: 420px; }
+.card-table { grid-column: span 12; min-height: 360px; }
+.card-warranty { grid-column: span 6; min-height: 400px; }
+.card-activity { grid-column: span 6; min-height: 400px; }
+
+/* Cards fill their containers */
+.dashboard-grid .card {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-grid .card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-grid .card-map .card-body {
+  justify-content: space-between;
+}
+
+.dashboard-grid .card-donut .card-body {
+  justify-content: center;
+}
+
+.dashboard-grid .card-activity .card-body,
+.dashboard-grid .card-warranty .card-body {
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Page Header Extensions
+   -------------------------------------------------------------------------- */
+.page-header-left {
+  flex: 1;
+}
+
+.date-range-picker {
+  display: flex;
+  background-color: var(--admin-surface);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  overflow: hidden;
+}
+
+.date-btn {
+  padding: var(--admin-space-2) var(--admin-space-4);
+  font-family: var(--admin-font-family);
+  font-size: var(--admin-text-sm);
+  font-weight: 500;
+  color: var(--admin-text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--admin-transition-fast);
+}
+
+.date-btn:hover {
+  background-color: var(--admin-surface-hover);
+  color: var(--admin-text);
+}
+
+.date-btn.active {
+  background-color: var(--admin-primary);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Card Extensions
+   -------------------------------------------------------------------------- */
+.card-body {
+  padding: var(--admin-space-5);
+}
+
+.card-actions {
+  display: flex;
+  gap: var(--admin-space-1);
+  background-color: var(--admin-surface);
+  border-radius: var(--admin-radius-md);
+  padding: var(--admin-space-1);
+}
+
+.card-action-btn {
+  padding: var(--admin-space-2) var(--admin-space-3);
+  font-family: var(--admin-font-family);
+  font-size: var(--admin-text-xs);
+  font-weight: 500;
+  color: var(--admin-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--admin-radius-sm);
+  cursor: pointer;
+  transition: all var(--admin-transition-fast);
+}
+
+.card-action-btn:hover {
+  color: var(--admin-text);
+}
+
+.card-action-btn.active {
+  background-color: var(--admin-background);
+  color: var(--admin-primary);
+  box-shadow: var(--admin-shadow-sm);
+}
+
+/* --------------------------------------------------------------------------
+   World Map - Enhanced with Zoom/Pan
+   -------------------------------------------------------------------------- */
+
+/* Card Header Controls Layout */
+.card-header-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-3);
+}
+
+/* Region Selector */
+.region-selector {
+  display: flex;
+  gap: var(--admin-space-1);
+  background-color: var(--admin-surface);
+  border-radius: var(--admin-radius-md);
+  padding: var(--admin-space-1);
+}
+
+.region-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-1);
+  padding: var(--admin-space-2) var(--admin-space-3);
+  font-family: var(--admin-font-family);
+  font-size: var(--admin-text-xs);
+  font-weight: 600;
+  color: var(--admin-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--admin-radius-sm);
+  cursor: pointer;
+  transition: all var(--admin-transition-fast);
+  white-space: nowrap;
+}
+
+.region-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.region-btn:hover {
+  color: var(--admin-text);
+  background-color: var(--admin-background);
+}
+
+.region-btn.active {
+  background-color: var(--admin-primary);
+  color: #fff;
+}
+
+/* Map Card Body */
+.map-card-body {
+  padding: var(--admin-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-4);
+}
+
+/* Map Wrapper */
+.map-wrapper {
+  position: relative;
+  flex: 1;
+  min-height: 280px;
+  border-radius: var(--admin-radius-lg);
+  overflow: hidden;
+  background-color: var(--admin-surface);
+}
+
+/* World Map Container */
+.world-map-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  cursor: grab;
+}
+
+.world-map-container:active {
+  cursor: grabbing;
+}
+
+.world-map {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: viewBox 0.3s ease;
+}
+
+/* Ocean & Grid - Theme Independent */
+.world-map .ocean {
+  fill: #e8f4f8 !important;
+}
+
+.world-map .map-grid line {
+  stroke: #ccd6dd;
+}
+
+/* Country Paths - Theme Independent, High Contrast */
+.world-map .country {
+  fill: #a8b5c4 !important;
+  stroke: #ffffff !important;
+  stroke-width: 0.8 !important;
+  transition: fill 0.2s ease;
+  cursor: pointer;
+}
+
+.world-map .country:hover,
+.world-map .country.hover {
+  fill: #7a8a9a !important;
+  stroke: #ffffff !important;
+  stroke-width: 1.2 !important;
+}
+
+/* Map Markers */
+.world-map .marker {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.world-map .marker-glow {
+  fill: var(--admin-primary);
+  opacity: calc(var(--marker-opacity, 0.5) * 0.3);
+  transition: r 0.25s ease, opacity 0.25s ease;
+}
+
+.world-map .marker-core {
+  fill: var(--admin-primary);
+  opacity: var(--marker-opacity, 0.8);
+  transition: r 0.25s ease;
+}
+
+.world-map .marker-label {
+  font-size: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.world-map .marker:hover .marker-label {
+  opacity: 1;
+}
+
+/* Map Zoom Controls */
+.map-controls {
+  position: absolute;
+  top: var(--admin-space-3);
+  right: var(--admin-space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-1);
+  z-index: 10;
+}
+
+.map-control-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--admin-background);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-md);
+  color: var(--admin-text-secondary);
+  cursor: pointer;
+  transition: all var(--admin-transition-fast);
+  box-shadow: var(--admin-shadow-sm);
+}
+
+.map-control-btn:hover {
+  background-color: var(--admin-surface-hover);
+  color: var(--admin-text);
+  border-color: var(--admin-border-hover);
+}
+
+.map-control-btn:active {
+  transform: scale(0.95);
+}
+
+.map-control-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Zoom Indicator */
+.zoom-indicator {
+  position: absolute;
+  bottom: var(--admin-space-3);
+  right: var(--admin-space-3);
+  padding: var(--admin-space-1) var(--admin-space-2);
+  font-size: var(--admin-text-xs);
+  font-weight: 600;
+  font-family: var(--admin-font-mono);
+  color: var(--admin-text-muted);
+  background-color: var(--admin-background);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-sm);
+  z-index: 10;
+}
+
+/* Map Tooltip */
+.map-tooltip {
+  position: absolute;
+  padding: var(--admin-space-3);
+  background-color: var(--admin-background);
+  border: 1px solid var(--admin-border);
+  border-radius: var(--admin-radius-lg);
+  box-shadow: var(--admin-shadow-lg);
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+  transition: all 0.15s ease;
+  min-width: 160px;
+}
+
+.map-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-2);
+  margin-bottom: var(--admin-space-2);
+  padding-bottom: var(--admin-space-2);
+  border-bottom: 1px solid var(--admin-border);
+}
+
+.tooltip-flag {
+  font-size: 1.25rem;
+}
+
+.tooltip-country {
+  font-size: var(--admin-text-sm);
+  font-weight: 600;
+  color: var(--admin-text);
+}
+
+.tooltip-stats {
+  display: flex;
+  gap: var(--admin-space-4);
+}
+
+.tooltip-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.tooltip-value {
+  font-size: var(--admin-text-lg);
+  font-weight: 700;
+  color: var(--admin-primary);
+  font-family: var(--admin-font-mono);
+}
+
+.tooltip-label {
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-muted);
+}
+
+/* Map Footer */
+.map-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--admin-space-3);
+  border-top: 1px solid var(--admin-border);
+}
+
+/* Map Legend - Enhanced */
+.map-legend {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-3);
+}
+
+.legend-title {
+  font-size: var(--admin-text-xs);
+  font-weight: 500;
+  color: var(--admin-text-muted);
+}
+
+.legend-scale {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-1);
+}
+
+.legend-gradient {
+  width: 120px;
+  height: 8px;
+  border-radius: var(--admin-radius-full);
+  background: linear-gradient(90deg, var(--admin-primary-light), var(--admin-primary));
+}
+
+.legend-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--admin-text-muted);
+}
+
+/* Map Stats */
+.map-stats {
+  display: flex;
+  gap: var(--admin-space-5);
+}
+
+.map-stat {
+  text-align: right;
+}
+
+.map-stat-value {
+  display: block;
+  font-size: var(--admin-text-xl);
+  font-weight: 700;
+  color: var(--admin-text);
+  line-height: 1.2;
+  font-family: var(--admin-font-mono);
+}
+
+.map-stat-value.positive {
+  color: var(--admin-success);
+}
+
+.map-stat-label {
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-muted);
+}
+
+/* Pink Theme Marker Animation */
+.admin-body:not(.theme-blue) .world-map .marker-glow {
+  animation: markerPulse 3s ease-in-out infinite;
+}
+
+@keyframes markerPulse {
+  0%, 100% { opacity: calc(var(--marker-opacity, 0.5) * 0.2); }
+  50% { opacity: calc(var(--marker-opacity, 0.5) * 0.5); }
+}
+
+/* Disable animation on hover */
+.world-map .marker:hover .marker-glow {
+  animation: none;
+}
+
+/* --------------------------------------------------------------------------
+   Charts
+   -------------------------------------------------------------------------- */
+
+/* Donut Chart */
+.donut-chart-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto var(--admin-space-4);
+}
+
+.donut-chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.donut-value {
+  display: block;
+  font-size: var(--admin-text-xl);
+  font-weight: 700;
+  color: var(--admin-text);
+  line-height: 1.2;
+}
+
+.donut-label {
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-muted);
+}
+
+/* Chart Legend */
+.chart-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-2);
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-3);
+  padding: var(--admin-space-2);
+  border-radius: var(--admin-radius-sm);
+  transition: background-color var(--admin-transition-fast);
+}
+
+.legend-row:hover {
+  background-color: var(--admin-surface);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--admin-radius-sm);
+  flex-shrink: 0;
+}
+
+.legend-label {
+  flex: 1;
+  font-size: var(--admin-text-sm);
+  color: var(--admin-text);
+}
+
+.legend-value {
+  font-size: var(--admin-text-sm);
+  font-weight: 600;
+  color: var(--admin-text);
+  font-family: var(--admin-font-mono);
+}
+
+/* --------------------------------------------------------------------------
+   Table Extensions
+   -------------------------------------------------------------------------- */
+.serial-number {
+  font-family: var(--admin-font-mono);
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-secondary);
+  background-color: var(--admin-surface);
+  padding: var(--admin-space-1) var(--admin-space-2);
+  border-radius: var(--admin-radius-sm);
+}
+
+.location-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-2);
+}
+
+.flag {
+  font-size: 1.1em;
+}
+
+/* --------------------------------------------------------------------------
+   Warranty Section
+   -------------------------------------------------------------------------- */
+.warranty-stats {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: var(--admin-space-5);
+  border-bottom: 1px solid var(--admin-border);
+  margin-bottom: var(--admin-space-5);
+}
+
+.warranty-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--admin-space-2);
+}
+
+.warranty-progress {
+  position: relative;
+  width: 72px;
+  height: 72px;
+}
+
+.progress-ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.progress-bg {
+  fill: none;
+  stroke: var(--admin-surface);
+  stroke-width: 8;
+}
+
+.progress-fill {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 264;
+  stroke-dashoffset: calc(264 - (264 * var(--progress) / 100));
+  transition: stroke-dashoffset 0.6s ease;
+}
+
+.progress-fill.active {
+  stroke: var(--admin-success);
+}
+
+.progress-fill.expiring {
+  stroke: var(--admin-warning);
+}
+
+.progress-fill.expired {
+  stroke: var(--admin-error);
+}
+
+.progress-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--admin-text-sm);
+  font-weight: 700;
+  color: var(--admin-text);
+}
+
+.warranty-label {
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-muted);
+  text-align: center;
+}
+
+.warranty-count {
+  font-size: var(--admin-text-lg);
+  font-weight: 700;
+  color: var(--admin-text);
+}
+
+/* Warranty Timeline */
+.timeline-title {
+  font-size: var(--admin-text-sm);
+  font-weight: 600;
+  color: var(--admin-text);
+  margin-bottom: var(--admin-space-3);
+}
+
+.timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-3);
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: var(--admin-space-3);
+  padding: var(--admin-space-3);
+  background-color: var(--admin-surface);
+  border-radius: var(--admin-radius-md);
+  transition: all var(--admin-transition-fast);
+}
+
+.timeline-item:hover {
+  background-color: var(--admin-surface-hover);
+}
+
+.timeline-item.urgent {
+  background-color: var(--admin-error-bg);
+  border-left: 3px solid var(--admin-error);
+}
+
+.timeline-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--admin-warning);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.timeline-item.urgent .timeline-dot {
+  background-color: var(--admin-error);
+  animation: urgentPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes urgentPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 79, 0.4); }
+  50% { box-shadow: 0 0 0 6px rgba(255, 77, 79, 0); }
+}
+
+.timeline-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.timeline-user {
+  display: block;
+  font-size: var(--admin-text-sm);
+  font-weight: 600;
+  color: var(--admin-text);
+  line-height: 1.3;
+}
+
+.timeline-product {
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-muted);
+}
+
+.timeline-time {
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-muted);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Activity Feed
+   -------------------------------------------------------------------------- */
+.activity-feed {
+  display: flex;
+  flex-direction: column;
+  gap: var(--admin-space-1);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.activity-feed::-webkit-scrollbar {
+  width: 4px;
+}
+
+.activity-feed::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.activity-feed::-webkit-scrollbar-thumb {
+  background-color: var(--admin-border);
+  border-radius: var(--admin-radius-full);
+}
+
+.activity-item {
+  display: flex;
+  gap: var(--admin-space-3);
+  padding: var(--admin-space-3);
+  border-radius: var(--admin-radius-md);
+  transition: background-color var(--admin-transition-fast);
+}
+
+.activity-item:hover {
+  background-color: var(--admin-surface);
+}
+
+.activity-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.activity-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.activity-icon.activation {
+  background-color: var(--admin-success-bg);
+  color: var(--admin-success);
+}
+
+.activity-icon.warranty {
+  background-color: var(--admin-primary-light);
+  color: var(--admin-primary);
+}
+
+.activity-icon.user {
+  background-color: var(--admin-accent-100);
+  color: var(--admin-accent-600);
+}
+
+.activity-icon.ticket {
+  background-color: var(--admin-warning-bg);
+  color: var(--admin-warning);
+}
+
+.activity-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-content p {
+  font-size: var(--admin-text-sm);
+  color: var(--admin-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.activity-content strong {
+  color: var(--admin-text);
+  font-weight: 600;
+}
+
+.activity-time {
+  font-size: var(--admin-text-xs);
+  color: var(--admin-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Pink Theme Enhancements
+   -------------------------------------------------------------------------- */
+
+/* Pink theme marker colors (map background is theme-independent) */
+.admin-body:not(.theme-blue) .world-map .marker-glow,
+.admin-body:not(.theme-blue) .world-map .marker-core {
+  fill: var(--admin-pink-600);
+}
+
+.admin-body:not(.theme-blue) .legend-gradient {
+  background: linear-gradient(90deg, var(--admin-pink-100), var(--admin-pink-600));
+}
+
+.admin-body:not(.theme-blue) .tooltip-value {
+  color: var(--admin-pink-600);
+}
+
+.admin-body:not(.theme-blue) .region-btn.active {
+  background: linear-gradient(135deg, var(--admin-pink-500), var(--admin-pink-600));
+}
+
+.admin-body:not(.theme-blue) .map-control-btn:hover {
+  background-color: var(--admin-pink-50);
+  border-color: var(--admin-pink-200);
+  color: var(--admin-pink-600);
+}
+
+.admin-body:not(.theme-blue) .date-btn.active {
+  background: linear-gradient(135deg, var(--admin-pink-500), var(--admin-pink-600));
+}
+
+.admin-body:not(.theme-blue) .card-action-btn.active {
+  color: var(--admin-pink-600);
+}
+
+.admin-body:not(.theme-blue) .card-map {
+  animation: fadeInUp 0.5s ease-out 0.1s both;
+}
+
+.admin-body:not(.theme-blue) .card-donut {
+  animation: fadeInUp 0.5s ease-out 0.15s both;
+}
+
+.admin-body:not(.theme-blue) .card-table {
+  animation: fadeInUp 0.5s ease-out 0.2s both;
+}
+
+.admin-body:not(.theme-blue) .card-warranty {
+  animation: fadeInUp 0.5s ease-out 0.35s both;
+}
+
+.admin-body:not(.theme-blue) .card-activity {
+  animation: fadeInUp 0.5s ease-out 0.4s both;
+}
+
+.admin-body:not(.theme-blue) .legend-row:hover {
+  background-color: var(--admin-pink-50);
+}
+
+.admin-body:not(.theme-blue) .activity-item:hover {
+  background-color: var(--admin-pink-50);
+}
+
+.admin-body:not(.theme-blue) .timeline-item:hover {
+  background-color: var(--admin-pink-100);
+}
+
+/* --------------------------------------------------------------------------
+   Blue Theme Adjustments
+   -------------------------------------------------------------------------- */
+.admin-body.theme-blue .date-btn.active {
+  background-color: #1677ff;
+}
+
+.admin-body.theme-blue .card-action-btn.active {
+  color: #1677ff;
+}
+
+/* Blue theme marker colors (map background is theme-independent) */
+.admin-body.theme-blue .world-map .marker-glow,
+.admin-body.theme-blue .world-map .marker-core {
+  fill: #1677ff;
+}
+
+.admin-body.theme-blue .legend-gradient {
+  background: linear-gradient(90deg, #e6f4ff, #1677ff);
+}
+
+.admin-body.theme-blue .tooltip-value {
+  color: #1677ff;
+}
+
+.admin-body.theme-blue .region-btn.active {
+  background-color: #1677ff;
+}
+
+.admin-body.theme-blue .map-control-btn:hover {
+  background-color: #e6f4ff;
+  border-color: #91caff;
+  color: #1677ff;
+}
+
+.admin-body.theme-blue .legend-dot {
+  background-color: #1677ff;
+}
+
+.admin-body.theme-blue .legend-row:hover {
+  background-color: #fafafa;
+}
+
+.admin-body.theme-blue .activity-icon.warranty {
+  background-color: #e6f4ff;
+  color: #1677ff;
+}
+
+.admin-body.theme-blue .activity-icon.user {
+  background-color: #e6f4ff;
+  color: #1677ff;
+}
+
+.admin-body.theme-blue .activity-item:hover {
+  background-color: #fafafa;
+}
+
+.admin-body.theme-blue .timeline-item:hover {
+  background-color: #f5f5f5;
+}
+
+.admin-body.theme-blue .serial-number {
+  background-color: #fafafa;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Desktop Large (1440px+)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1440px) {
+  .dashboard-content {
+    padding: var(--admin-space-10);
+  }
+
+  .dashboard-grid {
+    gap: var(--admin-space-8);
+  }
+
+  .donut-chart-container {
+    width: 220px;
+    height: 220px;
+  }
+
+  .world-map-container {
+    aspect-ratio: 2.2 / 1;
+  }
+
+  .map-stat-value {
+    font-size: var(--admin-text-3xl);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Desktop Extra Large (1680px+)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1680px) {
+  .dashboard-content {
+    padding: var(--admin-space-12);
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .dashboard-grid {
+    gap: var(--admin-space-10);
+  }
+
+  .stat-value {
+    font-size: var(--admin-text-4xl);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Desktop (1280px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1280px) {
+  /* Map and donut side by side, table full width, warranty/activity side by side */
+  .card-map { grid-column: span 8; }
+  .card-donut { grid-column: span 4; }
+  .card-table { grid-column: span 12; }
+  .card-warranty { grid-column: span 6; }
+  .card-activity { grid-column: span 6; }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Tablet (1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    min-height: auto;
+  }
+
+  .dashboard-grid {
+    gap: var(--admin-space-5);
+    align-content: start;
+  }
+
+  /* Map and Donut still side by side on tablet landscape */
+  .card-map { grid-column: span 8; min-height: 340px; }
+  .card-donut { grid-column: span 4; min-height: 340px; }
+  .card-table { grid-column: span 12; min-height: auto; }
+  .card-warranty { grid-column: span 6; min-height: auto; }
+  .card-activity { grid-column: span 6; min-height: auto; }
+
+  .warranty-stats {
+    flex-wrap: wrap;
+    gap: var(--admin-space-4);
+  }
+
+  .warranty-stat {
+    flex: 1;
+    min-width: 100px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Tablet Portrait (768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    gap: var(--admin-space-4);
+  }
+
+  .page-header-right {
+    flex-direction: column;
+    gap: var(--admin-space-3);
+  }
+
+  .date-range-picker {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .date-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .btn-primary-admin {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Map responsive */
+  .card-header-controls {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--admin-space-2);
+    width: 100%;
+  }
+
+  .region-selector {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .region-btn {
+    flex: 1;
+    justify-content: center;
+    padding: var(--admin-space-2);
+  }
+
+  .region-btn svg {
+    display: none;
+  }
+
+  .map-wrapper {
+    min-height: 220px;
+  }
+
+  .map-footer {
+    flex-direction: column;
+    gap: var(--admin-space-3);
+    align-items: stretch;
+  }
+
+  .map-legend {
+    justify-content: center;
+  }
+
+  .map-stats {
+    justify-content: space-around;
+  }
+
+  .map-stat {
+    text-align: center;
+  }
+
+  .map-stat-value {
+    font-size: var(--admin-text-lg);
+  }
+
+  .map-control-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .map-control-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .map-legend {
+    flex-wrap: wrap;
+    gap: var(--admin-space-2);
+  }
+
+  .map-stats {
+    flex-wrap: wrap;
+    gap: var(--admin-space-4);
+  }
+
+  .map-stat {
+    flex: 1;
+    min-width: 80px;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--admin-space-3);
+  }
+
+  .card-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .donut-chart-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  /* Hide some table columns */
+  .data-table th:nth-child(3),
+  .data-table td:nth-child(3) {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Mobile (576px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 576px) {
+  .dashboard-content {
+    padding: var(--admin-space-4);
+    min-height: auto;
+  }
+
+  .dashboard-grid {
+    gap: var(--admin-space-3);
+  }
+
+  /* Reset all min-heights for mobile - all cards full width */
+  .card-map,
+  .card-donut,
+  .card-table,
+  .card-warranty,
+  .card-activity {
+    grid-column: span 12;
+    min-height: auto;
+  }
+
+  /* Map mobile styles */
+  .map-wrapper {
+    min-height: 200px;
+  }
+
+  .world-map-container {
+    min-height: 200px;
+  }
+
+  .map-controls {
+    top: var(--admin-space-2);
+    right: var(--admin-space-2);
+  }
+
+  .map-control-btn {
+    width: 28px;
+    height: 28px;
+  }
+
+  .map-control-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .zoom-indicator {
+    bottom: var(--admin-space-2);
+    right: var(--admin-space-2);
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .map-tooltip {
+    min-width: 140px;
+    padding: var(--admin-space-2);
+  }
+
+  .tooltip-flag {
+    font-size: 1rem;
+  }
+
+  .tooltip-country {
+    font-size: var(--admin-text-xs);
+  }
+
+  .tooltip-value {
+    font-size: var(--admin-text-base);
+  }
+
+  .region-btn span {
+    font-size: 10px;
+  }
+
+  .legend-gradient {
+    width: 80px;
+  }
+
+  .map-legend {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: var(--admin-space-2) 0;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .legend-item {
+    flex-shrink: 0;
+  }
+
+  .map-stats {
+    flex-direction: column;
+    gap: var(--admin-space-3);
+  }
+
+  .map-stat {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--admin-space-2) 0;
+    border-bottom: 1px solid var(--admin-border);
+  }
+
+  .map-stat:last-child {
+    border-bottom: none;
+  }
+
+  .map-stat-value {
+    font-size: var(--admin-text-xl);
+  }
+
+  .warranty-stats {
+    gap: var(--admin-space-2);
+  }
+
+  .warranty-progress {
+    width: 56px;
+    height: 56px;
+  }
+
+  .warranty-count {
+    font-size: var(--admin-text-base);
+  }
+
+  /* Hide more table columns */
+  .data-table th:nth-child(4),
+  .data-table td:nth-child(4),
+  .data-table th:nth-child(5),
+  .data-table td:nth-child(5) {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive - Small Mobile (400px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 400px) {
+  .dashboard-content {
+    padding: var(--admin-space-3);
+  }
+
+  .page-title {
+    font-size: var(--admin-text-xl);
+  }
+
+  .date-btn {
+    padding: var(--admin-space-2);
+    font-size: var(--admin-text-xs);
+  }
+
+  .card-body {
+    padding: var(--admin-space-4);
+  }
+
+  .donut-chart-container {
+    width: 140px;
+    height: 140px;
+  }
+
+  .donut-value {
+    font-size: var(--admin-text-lg);
+  }
+
+  .warranty-progress {
+    width: 48px;
+    height: 48px;
+  }
+
+  .progress-ring {
+    stroke-width: 6;
+  }
+
+  .progress-value {
+    font-size: var(--admin-text-xs);
+  }
+
+  .activity-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .activity-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Landscape Phone Optimization
+   -------------------------------------------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .card-map { grid-column: span 8; }
+  .card-donut { grid-column: span 4; }
+
+  .world-map-container {
+    aspect-ratio: 3 / 1;
+  }
+
+  .map-legend,
+  .map-stats {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Touch Device Optimizations
+   -------------------------------------------------------------------------- */
+@media (hover: none) and (pointer: coarse) {
+  .date-btn {
+    min-height: 44px;
+  }
+
+  .card-action-btn {
+    min-height: 40px;
+    padding: var(--admin-space-2) var(--admin-space-4);
+  }
+
+  .legend-row {
+    min-height: 44px;
+  }
+
+  .activity-item {
+    min-height: 60px;
+  }
+
+  .timeline-item {
+    min-height: 56px;
+  }
+
+  /* Remove hover effects */
+  .legend-row:hover,
+  .activity-item:hover,
+  .timeline-item:hover {
+    background-color: transparent;
+  }
+
+  /* Add active states */
+  .legend-row:active,
+  .activity-item:active,
+  .timeline-item:active {
+    background-color: var(--admin-surface-hover);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced Motion Support
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .admin-body:not(.theme-blue) .world-map .marker-glow {
+    animation: none;
+  }
+
+  .timeline-item.urgent .timeline-dot {
+    animation: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Print Styles
+   -------------------------------------------------------------------------- */
+@media print {
+  .dashboard-grid {
+    display: block;
+  }
+
+  .card {
+    break-inside: avoid;
+    margin-bottom: 20px;
+  }
+
+  .card-map,
+  .card-activity {
+    display: none;
+  }
+
+  .world-map-container {
+    display: none;
+  }
+}

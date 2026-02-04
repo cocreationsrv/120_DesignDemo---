@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FFF5F7">
+  <title>仪表盘 | Dashboard</title>
+  <link rel="stylesheet" href="admin.css?v=12">
+  <link rel="stylesheet" href="dashboard.css?v=8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="admin-body">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 28V16L20 12L28 16V28" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 20L20 24L28 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20" cy="16" r="2" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">ServiceHub</span>
+      </a>
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle Sidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 17l-5-5 5-5M18 17l-5-5 5-5"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <span class="nav-section-title">Overview</span>
+        <a href="dashboard.html" class="nav-item active">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 20V10M18 20V4M6 20v-4"/>
+          </svg>
+          <span class="nav-label">Analytics</span>
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-section-title">Management</span>
+        <a href="admin.html" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+          <span class="nav-label">Users</span>
+          <span class="nav-badge">128</span>
+        </a>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M20 7h-9M14 17H5"/>
+            <circle cx="17" cy="17" r="3"/>
+            <circle cx="7" cy="7" r="3"/>
+          </svg>
+          <span class="nav-label">Products</span>
+        </a>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          <span class="nav-label">Warranty</span>
+          <span class="nav-badge warning">24</span>
+        </a>
+      </div>
+
+      <div class="nav-section">
+        <span class="nav-section-title">Support</span>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <span class="nav-label">Tickets</span>
+          <span class="nav-badge">12</span>
+        </a>
+        <a href="#" class="nav-item">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/>
+          </svg>
+          <span class="nav-label">Help Center</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item user-item">
+        <div class="user-avatar">JD</div>
+        <div class="user-info">
+          <span class="user-name">John Doe</span>
+          <span class="user-role">Administrator</span>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12h18M3 6h18M3 18h18"/>
+          </svg>
+        </button>
+        <nav class="breadcrumb">
+          <span>Home</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+          <span class="current">Dashboard</span>
+        </nav>
+      </div>
+      <div class="topbar-right">
+        <!-- Language Dropdown -->
+        <div class="admin-lang-dropdown" id="langDropdown">
+          <button class="admin-lang-toggle" id="langToggle" aria-label="Language">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="lang-code" id="currentLang">EN</span>
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="admin-lang-menu" id="langMenu">
+            <button class="admin-lang-item" data-lang="zh">Chinese</button>
+            <button class="admin-lang-item active" data-lang="en">English</button>
+            <button class="admin-lang-item" data-lang="de">Deutsch</button>
+            <button class="admin-lang-item" data-lang="ja">Japanese</button>
+            <button class="admin-lang-item" data-lang="fr">French</button>
+          </div>
+        </div>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme">
+          <svg class="icon-pink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+          <svg class="icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <!-- Notifications -->
+        <button class="topbar-btn" aria-label="Notifications">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+          <span class="notification-dot"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="admin-content dashboard-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <div class="page-header-left">
+          <h1 class="page-title">Dashboard</h1>
+          <p class="page-subtitle">Real-time analytics and global insights</p>
+        </div>
+        <div class="page-header-right">
+          <div class="date-range-picker">
+            <button class="date-btn active">Today</button>
+            <button class="date-btn">7D</button>
+            <button class="date-btn">30D</button>
+            <button class="date-btn">90D</button>
+          </div>
+          <button class="btn-primary-admin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Export
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">Total Users</span>
+            <span class="stat-value" data-count="12847">12,847</span>
+            <span class="stat-change positive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+              </svg>
+              +12.5%
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22,4 12,14.01 9,11.01"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">Activations</span>
+            <span class="stat-value" data-count="8492">8,492</span>
+            <span class="stat-change positive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+              </svg>
+              +8.2%
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">Warranties</span>
+            <span class="stat-value" data-count="3256">3,256</span>
+            <span class="stat-change positive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+              </svg>
+              +5.7%
+            </span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          </div>
+          <div class="stat-content">
+            <span class="stat-label">Support Tickets</span>
+            <span class="stat-value" data-count="156">156</span>
+            <span class="stat-change negative">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6"/>
+              </svg>
+              -3.2%
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Grid -->
+      <div class="dashboard-grid">
+        <!-- Global Heatmap -->
+        <div class="card card-map">
+          <div class="card-header">
+            <h2 class="card-title">Global Activations</h2>
+            <div class="card-header-controls">
+              <!-- Region Selector -->
+              <div class="region-selector">
+                <button class="region-btn active" data-region="world" title="World">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                  </svg>
+                  <span>World</span>
+                </button>
+                <button class="region-btn" data-region="asia" title="Asia Pacific">
+                  <span>APAC</span>
+                </button>
+                <button class="region-btn" data-region="europe" title="Europe">
+                  <span>EU</span>
+                </button>
+                <button class="region-btn" data-region="americas" title="Americas">
+                  <span>AM</span>
+                </button>
+              </div>
+              <!-- Data Type Toggle -->
+              <div class="card-actions">
+                <button class="card-action-btn active" data-view="activations">Activations</button>
+                <button class="card-action-btn" data-view="warranties">Warranties</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body map-card-body">
+            <!-- Map Wrapper with Controls -->
+            <div class="map-wrapper">
+              <!-- Zoom Controls -->
+              <div class="map-controls">
+                <button class="map-control-btn" id="zoomIn" title="Zoom In">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+                  </svg>
+                </button>
+                <button class="map-control-btn" id="zoomOut" title="Zoom Out">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35M8 11h6"/>
+                  </svg>
+                </button>
+                <button class="map-control-btn" id="zoomReset" title="Reset View">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                    <path d="M3 3v5h5"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Map Container -->
+              <div class="world-map-container" id="worldMap">
+                <!-- SVG World Map will be inserted here -->
+              </div>
+
+              <!-- Tooltip -->
+              <div class="map-tooltip" id="mapTooltip">
+                <div class="tooltip-header">
+                  <span class="tooltip-flag" id="tooltipFlag"></span>
+                  <span class="tooltip-country" id="tooltipCountry">Country</span>
+                </div>
+                <div class="tooltip-stats">
+                  <div class="tooltip-stat">
+                    <span class="tooltip-value" id="tooltipActivations">0</span>
+                    <span class="tooltip-label">Activations</span>
+                  </div>
+                  <div class="tooltip-stat">
+                    <span class="tooltip-value" id="tooltipWarranties">0</span>
+                    <span class="tooltip-label">Warranties</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Zoom Level Indicator -->
+              <div class="zoom-indicator" id="zoomIndicator">100%</div>
+            </div>
+
+            <!-- Map Footer -->
+            <div class="map-footer">
+              <div class="map-legend">
+                <span class="legend-title">Activation Density:</span>
+                <div class="legend-scale">
+                  <div class="legend-gradient"></div>
+                  <div class="legend-labels">
+                    <span>Low</span>
+                    <span>Medium</span>
+                    <span>High</span>
+                  </div>
+                </div>
+              </div>
+              <div class="map-stats">
+                <div class="map-stat">
+                  <span class="map-stat-value" id="statCountries">47</span>
+                  <span class="map-stat-label">Countries</span>
+                </div>
+                <div class="map-stat">
+                  <span class="map-stat-value" id="statTotal">8,492</span>
+                  <span class="map-stat-label">Total</span>
+                </div>
+                <div class="map-stat">
+                  <span class="map-stat-value positive" id="statGrowth">+23%</span>
+                  <span class="map-stat-label">Growth</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Distribution (right side of map) -->
+        <div class="card card-donut">
+          <div class="card-header">
+            <h2 class="card-title">Product Distribution</h2>
+            <a href="#" class="card-link">View All</a>
+          </div>
+          <div class="card-body">
+            <div class="donut-chart-container">
+              <canvas id="productChart"></canvas>
+              <div class="donut-center">
+                <span class="donut-value">8,492</span>
+                <span class="donut-label">Total</span>
+              </div>
+            </div>
+            <div class="chart-legend" id="productLegend"></div>
+          </div>
+        </div>
+
+        <!-- Recent Activations Table -->
+        <div class="card card-table">
+          <div class="card-header">
+            <h2 class="card-title">Recent Activations</h2>
+            <a href="#" class="card-link">View All</a>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Product</th>
+                  <th>Serial Number</th>
+                  <th>Location</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="activationsTable">
+                <!-- Data will be inserted by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Warranty Status -->
+        <div class="card card-warranty">
+          <div class="card-header">
+            <h2 class="card-title">Warranty Overview</h2>
+            <a href="#" class="card-link">Manage</a>
+          </div>
+          <div class="card-body">
+            <div class="warranty-stats">
+              <div class="warranty-stat">
+                <div class="warranty-progress">
+                  <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-bg" cx="50" cy="50" r="42"/>
+                    <circle class="progress-fill active" cx="50" cy="50" r="42" style="--progress: 75"/>
+                  </svg>
+                  <span class="progress-value">75%</span>
+                </div>
+                <span class="warranty-label">Active</span>
+                <span class="warranty-count">2,442</span>
+              </div>
+              <div class="warranty-stat">
+                <div class="warranty-progress">
+                  <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-bg" cx="50" cy="50" r="42"/>
+                    <circle class="progress-fill expiring" cx="50" cy="50" r="42" style="--progress: 18"/>
+                  </svg>
+                  <span class="progress-value">18%</span>
+                </div>
+                <span class="warranty-label">Expiring Soon</span>
+                <span class="warranty-count">586</span>
+              </div>
+              <div class="warranty-stat">
+                <div class="warranty-progress">
+                  <svg class="progress-ring" viewBox="0 0 100 100">
+                    <circle class="progress-bg" cx="50" cy="50" r="42"/>
+                    <circle class="progress-fill expired" cx="50" cy="50" r="42" style="--progress: 7"/>
+                  </svg>
+                  <span class="progress-value">7%</span>
+                </div>
+                <span class="warranty-label">Expired</span>
+                <span class="warranty-count">228</span>
+              </div>
+            </div>
+            <div class="warranty-timeline">
+              <h4 class="timeline-title">Expiring This Week</h4>
+              <div class="timeline-items" id="warrantyTimeline">
+                <!-- Data will be inserted by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="card card-activity">
+          <div class="card-header">
+            <h2 class="card-title">Recent Activity</h2>
+            <button class="card-link">Refresh</button>
+          </div>
+          <div class="card-body">
+            <div class="activity-feed" id="activityFeed">
+              <!-- Data will be inserted by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // =========================================================================
+    // Theme & UI Initialization
+    // =========================================================================
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    const savedTheme = localStorage.getItem('adminTheme');
+
+    if (savedTheme === 'blue') {
+      body.classList.add('theme-blue');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('theme-blue');
+      const isBlue = body.classList.contains('theme-blue');
+      localStorage.setItem('adminTheme', isBlue ? 'blue' : 'pink');
+      updateChartsTheme();
+    });
+
+    // Sidebar Toggle
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const menuToggle = document.getElementById('menuToggle');
+
+    sidebarToggle?.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+    });
+
+    menuToggle?.addEventListener('click', () => {
+      sidebar.classList.toggle('mobile-open');
+    });
+
+    // Language Dropdown
+    const langDropdown = document.getElementById('langDropdown');
+    const langToggle = document.getElementById('langToggle');
+    const langMenu = document.getElementById('langMenu');
+
+    langToggle?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', () => {
+      langDropdown?.classList.remove('open');
+    });
+
+    // Date Range Picker
+    document.querySelectorAll('.date-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.date-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // Card Action Buttons
+    document.querySelectorAll('.card-action-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.closest('.card-actions');
+        parent.querySelectorAll('.card-action-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // =========================================================================
+    // Theme Colors
+    // =========================================================================
+    function getThemeColors() {
+      const isBlue = body.classList.contains('theme-blue');
+      return {
+        primary: isBlue ? '#1677ff' : '#FF6B8A',
+        primaryLight: isBlue ? '#e6f4ff' : '#FFE4EA',
+        secondary: isBlue ? '#69b1ff' : '#FFB3C1',
+        success: '#52c41a',
+        warning: '#faad14',
+        error: '#ff4d4f',
+        text: isBlue ? 'rgba(0,0,0,0.88)' : '#2D282A',
+        textSecondary: isBlue ? 'rgba(0,0,0,0.65)' : '#6B6165',
+        textMuted: isBlue ? 'rgba(0,0,0,0.45)' : '#9A8F94',
+        border: isBlue ? 'rgba(0,0,0,0.06)' : '#FFD6DE',
+        gradient: isBlue
+          ? ['#1677ff', '#69b1ff', '#91caff']
+          : ['#FF6B8A', '#FFB3C1', '#FFD6DE']
+      };
+    }
+
+    // =========================================================================
+    // Mock Data
+    // =========================================================================
+    const mockData = {
+      activations: [
+        { user: 'Sarah Chen', email: 'sarah@example.com', product: 'Smart Hub Pro', serial: 'SHP-2024-8847', location: 'Shanghai, CN', country: 'CN', date: '2 min ago', status: 'success' },
+        { user: 'Michael Brown', email: 'michael@example.com', product: 'IoT Gateway', serial: 'IOT-2024-3321', location: 'New York, US', country: 'US', date: '15 min ago', status: 'success' },
+        { user: 'Emma Wilson', email: 'emma@example.com', product: 'Smart Sensor Kit', serial: 'SSK-2024-7756', location: 'London, UK', country: 'GB', date: '32 min ago', status: 'pending' },
+        { user: 'Kenji Tanaka', email: 'kenji@example.com', product: 'Control Panel X', serial: 'CPX-2024-1192', location: 'Tokyo, JP', country: 'JP', date: '1 hour ago', status: 'success' },
+        { user: 'Lisa Mueller', email: 'lisa@example.com', product: 'Smart Hub Pro', serial: 'SHP-2024-9923', location: 'Berlin, DE', country: 'DE', date: '2 hours ago', status: 'success' },
+        { user: 'Pierre Dubois', email: 'pierre@example.com', product: 'IoT Gateway', serial: 'IOT-2024-4467', location: 'Paris, FR', country: 'FR', date: '3 hours ago', status: 'success' },
+      ],
+
+      regionData: {
+        labels: ['China', 'United States', 'Germany', 'Japan', 'UK', 'France', 'South Korea', 'Brazil'],
+        values: [2847, 1923, 1245, 892, 756, 523, 412, 294]
+      },
+
+      productData: {
+        labels: ['Smart Hub Pro', 'IoT Gateway', 'Smart Sensor Kit', 'Control Panel X', 'Network Bridge'],
+        values: [3245, 2156, 1523, 987, 581],
+        colors: null // Will be set based on theme
+      },
+
+      trendData: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        activations: [145, 232, 187, 298, 267, 189, 234],
+        warranties: [89, 134, 112, 167, 145, 98, 123]
+      },
+
+      countryActivations: {
+        CN: 2847, US: 1923, DE: 1245, JP: 892, GB: 756, FR: 523, KR: 412, BR: 294,
+        IN: 267, CA: 234, AU: 198, IT: 187, ES: 156, MX: 134, NL: 112, SE: 98,
+        CH: 89, PL: 78, SG: 67, TH: 56, MY: 45, VN: 34, ID: 28, PH: 23
+      },
+
+      warrantyExpiring: [
+        { user: 'Alex Wang', product: 'Smart Hub Pro', expires: 'Tomorrow', daysLeft: 1 },
+        { user: 'Maria Garcia', product: 'IoT Gateway', expires: 'In 2 days', daysLeft: 2 },
+        { user: 'Tom Johnson', product: 'Smart Sensor Kit', expires: 'In 3 days', daysLeft: 3 },
+        { user: 'Sophie Lee', product: 'Control Panel X', expires: 'In 5 days', daysLeft: 5 },
+      ],
+
+      activities: [
+        { type: 'activation', user: 'Sarah Chen', action: 'activated', target: 'Smart Hub Pro', time: '2 min ago', icon: 'check' },
+        { type: 'warranty', user: 'System', action: 'Warranty claim approved for', target: 'Michael Brown', time: '15 min ago', icon: 'shield' },
+        { type: 'user', user: 'Emma Wilson', action: 'registered a new account', target: '', time: '32 min ago', icon: 'user' },
+        { type: 'ticket', user: 'Support', action: 'resolved ticket', target: '#TK-2847', time: '1 hour ago', icon: 'message' },
+        { type: 'activation', user: 'Kenji Tanaka', action: 'activated', target: 'Control Panel X', time: '1 hour ago', icon: 'check' },
+        { type: 'warranty', user: 'Lisa Mueller', action: 'extended warranty for', target: 'IoT Gateway', time: '2 hours ago', icon: 'shield' },
+      ]
+    };
+
+    // =========================================================================
+    // World Map - Complete Implementation with Zoom/Pan
+    // =========================================================================
+
+    // Country data with names, flags, coordinates, and region
+    const countryData = {
+      CN: { name: 'China', flag: '🇨🇳', coords: [680, 180], region: 'asia' },
+      US: { name: 'United States', flag: '🇺🇸', coords: [150, 145], region: 'americas' },
+      DE: { name: 'Germany', flag: '🇩🇪', coords: [495, 115], region: 'europe' },
+      JP: { name: 'Japan', flag: '🇯🇵', coords: [825, 165], region: 'asia' },
+      GB: { name: 'United Kingdom', flag: '🇬🇧', coords: [450, 105], region: 'europe' },
+      FR: { name: 'France', flag: '🇫🇷', coords: [465, 130], region: 'europe' },
+      KR: { name: 'South Korea', flag: '🇰🇷', coords: [795, 175], region: 'asia' },
+      BR: { name: 'Brazil', flag: '🇧🇷', coords: [280, 330], region: 'americas' },
+      IN: { name: 'India', flag: '🇮🇳', coords: [640, 220], region: 'asia' },
+      CA: { name: 'Canada', flag: '🇨🇦', coords: [150, 90], region: 'americas' },
+      AU: { name: 'Australia', flag: '🇦🇺', coords: [810, 380], region: 'asia' },
+      IT: { name: 'Italy', flag: '🇮🇹', coords: [500, 140], region: 'europe' },
+      ES: { name: 'Spain', flag: '🇪🇸', coords: [448, 148], region: 'europe' },
+      MX: { name: 'Mexico', flag: '🇲🇽', coords: [130, 210], region: 'americas' },
+      NL: { name: 'Netherlands', flag: '🇳🇱', coords: [477, 108], region: 'europe' },
+      SE: { name: 'Sweden', flag: '🇸🇪', coords: [510, 75], region: 'europe' },
+      CH: { name: 'Switzerland', flag: '🇨🇭', coords: [488, 125], region: 'europe' },
+      PL: { name: 'Poland', flag: '🇵🇱', coords: [520, 110], region: 'europe' },
+      SG: { name: 'Singapore', flag: '🇸🇬', coords: [730, 290], region: 'asia' },
+      TH: { name: 'Thailand', flag: '🇹🇭', coords: [710, 240], region: 'asia' },
+      MY: { name: 'Malaysia', flag: '🇲🇾', coords: [725, 275], region: 'asia' },
+      VN: { name: 'Vietnam', flag: '🇻🇳', coords: [725, 235], region: 'asia' },
+      ID: { name: 'Indonesia', flag: '🇮🇩', coords: [755, 310], region: 'asia' },
+      PH: { name: 'Philippines', flag: '🇵🇭', coords: [780, 250], region: 'asia' },
+      RU: { name: 'Russia', flag: '🇷🇺', coords: [620, 95], region: 'europe' }
+    };
+
+    // Country warranty data (mock)
+    const countryWarranties = {
+      CN: 1423, US: 961, DE: 622, JP: 446, GB: 378, FR: 261, KR: 206, BR: 147,
+      IN: 133, CA: 117, AU: 99, IT: 93, ES: 78, MX: 67, NL: 56, SE: 49,
+      CH: 44, PL: 39, SG: 33, TH: 28, MY: 22, VN: 17, ID: 14, PH: 11
+    };
+
+    // Region viewBox settings for zoom
+    const regionViewBox = {
+      world: { x: 0, y: 0, width: 1000, height: 500 },
+      asia: { x: 550, y: 100, width: 400, height: 320 },
+      europe: { x: 380, y: 50, width: 220, height: 180 },
+      americas: { x: 50, y: 50, width: 320, height: 400 }
+    };
+
+    // World Map SVG - Simplified realistic world map fitting 0-1000 x 0-500
+    const worldMapSVG = `
+      <svg id="mapSvg" viewBox="0 0 1000 500" class="world-map" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block;background:#e8f4f8;">
+        <defs>
+          <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+
+        <!-- Ocean Background -->
+        <rect class="ocean" x="0" y="0" width="1000" height="500" fill="#e8f4f8"/>
+
+        <!-- Grid Lines -->
+        <g class="map-grid" opacity="0.15">
+          <line x1="0" y1="250" x2="1000" y2="250" stroke="#94a3b8" stroke-dasharray="5,5"/>
+          <line x1="500" y1="0" x2="500" y2="500" stroke="#94a3b8" stroke-dasharray="5,5"/>
+        </g>
+
+        <!-- Countries -->
+        <g class="countries" id="countriesGroup" fill="#a8b5c4" stroke="#ffffff" stroke-width="0.5">
+          <!-- Greenland -->
+          <path class="country" data-name="Greenland" d="M300,25 Q330,20 355,35 Q375,55 372,80 Q358,100 330,108 Q300,110 278,95 Q265,75 275,50 Q285,32 305,28 Z"/>
+
+          <!-- North America -->
+          <path class="country" data-id="CA" data-name="Canada" d="M55,58 Q95,52 135,58 Q175,55 210,62 Q240,72 258,92 Q265,115 252,132 Q225,148 185,155 Q142,160 102,155 Q68,148 48,128 Q42,105 52,82 Q60,65 62,62 Z M272,62 Q295,55 312,72 Q318,95 302,112 Q280,120 265,105 Q260,85 278,68 Z"/>
+          <path class="country" data-id="US" data-name="United States" d="M58,132 Q105,125 155,135 Q202,132 242,152 Q268,175 272,202 Q262,228 228,248 Q185,262 140,258 Q98,252 65,232 Q45,208 52,178 Q62,152 68,138 Z M28,158 Q48,152 62,172 Q65,195 48,212 Q28,218 18,198 Q18,175 32,162 Z"/>
+          <path class="country" data-id="MX" data-name="Mexico" d="M72,228 Q112,218 148,242 Q172,270 168,302 Q148,332 112,345 Q78,348 55,325 Q45,298 55,268 Q65,242 78,232 Z"/>
+
+          <!-- Central America -->
+          <path class="country" data-name="Guatemala" d="M128,322 Q145,315 158,332 Q162,352 148,365 Q130,372 120,355 Q118,338 132,325 Z"/>
+          <path class="country" data-name="Honduras" d="M155,335 Q175,328 190,348 Q192,370 175,385 Q155,392 142,375 Q142,355 158,340 Z"/>
+          <path class="country" data-name="Nicaragua" d="M165,378 Q188,370 205,392 Q208,418 190,435 Q168,445 152,428 Q152,402 170,385 Z"/>
+          <path class="country" data-name="Panama" d="M192,428 Q215,420 232,442 Q238,468 218,485 Q195,492 180,475 Q178,452 198,435 Z"/>
+
+          <!-- Caribbean -->
+          <path class="country" data-name="Cuba" d="M168,242 Q205,235 238,258 Q255,282 245,308 Q218,328 182,330 Q152,322 148,298 Q158,268 175,252 Z"/>
+          <path class="country" data-name="Jamaica" d="M198,312 Q218,305 232,322 Q235,342 218,355 Q198,360 188,345 Q188,325 202,315 Z"/>
+          <path class="country" data-name="Haiti" d="M238,295 Q260,288 278,310 Q280,335 262,352 Q240,358 228,340 Q228,315 242,302 Z"/>
+          <path class="country" data-name="Dominican Republic" d="M275,300 Q298,292 318,318 Q322,345 302,365 Q278,372 265,352 Q265,325 280,308 Z"/>
+
+          <!-- South America -->
+          <path class="country" data-name="Venezuela" d="M235,340 Q275,330 310,358 Q332,392 322,428 Q290,458 252,462 Q218,455 208,422 Q218,385 242,358 Z"/>
+          <path class="country" data-name="Colombia" d="M195,395 Q232,382 268,415 Q285,455 265,492 Q228,520 192,515 Q162,498 168,458 Q182,420 202,402 Z"/>
+          <path class="country" data-name="Ecuador" d="M165,485 Q192,475 215,502 Q222,532 200,555 Q172,565 155,545 Q155,515 172,495 Z"/>
+          <path class="country" data-name="Peru" d="M175,548 Q212,535 248,572 Q265,615 242,655 Q202,682 165,672 Q140,648 155,608 Q172,572 182,555 Z"/>
+          <path class="country" data-id="BR" data-name="Brazil" d="M262,432 Q322,415 378,462 Q418,518 415,582 Q392,642 332,678 Q272,698 218,678 Q185,648 195,598 Q225,538 275,485 Z"/>
+          <path class="country" data-name="Bolivia" d="M248,592 Q288,578 325,618 Q342,660 318,698 Q278,725 242,712 Q218,688 235,648 Q252,612 258,598 Z"/>
+          <path class="country" data-name="Argentina" d="M265,705 Q318,688 365,738 Q392,798 365,858 Q312,908 258,918 Q212,902 218,848 Q242,788 275,738 Z"/>
+          <path class="country" data-name="Chile" d="M232,668 Q262,655 285,695 Q295,748 275,808 Q248,868 218,912 Q195,928 182,912 Q192,862 218,805 Q242,745 248,698 Z"/>
+
+          <!-- Europe -->
+          <path class="country" data-name="Iceland" d="M402,72 Q432,65 455,88 Q465,115 445,138 Q418,148 398,128 Q390,105 408,82 Z"/>
+          <path class="country" data-name="Norway" d="M482,48 Q508,40 528,68 Q538,102 522,135 Q498,158 472,162 Q452,148 458,115 Q472,78 488,58 Z"/>
+          <path class="country" data-id="SE" data-name="Sweden" d="M512,62 Q542,52 568,88 Q582,132 565,175 Q535,208 502,212 Q478,198 488,158 Q505,112 522,78 Z"/>
+          <path class="country" data-name="Finland" d="M548,58 Q582,48 610,92 Q628,148 608,202 Q572,245 538,248 Q512,232 528,185 Q552,128 565,82 Z"/>
+          <path class="country" data-id="RU" data-name="Russia" d="M565,52 Q648,42 742,62 Q838,58 915,105 Q965,168 962,248 Q932,325 858,375 Q772,415 682,422 Q598,425 538,388 Q502,345 518,288 Q555,225 608,172 Q588,148 572,112 Q565,78 572,58 Z M952,95 Q982,88 998,125 Q995,162 972,182 Q942,188 928,158 Q935,125 958,105 Z"/>
+          <path class="country" data-id="GB" data-name="United Kingdom" d="M438,102 Q465,92 485,118 Q492,148 472,175 Q445,188 425,168 Q418,140 435,115 Z M448,85 Q468,78 482,98 Q480,120 462,132 Q445,128 440,110 Q445,92 452,88 Z"/>
+          <path class="country" data-name="Ireland" d="M415,112 Q442,102 462,132 Q468,162 445,185 Q418,195 402,172 Q402,142 420,122 Z"/>
+          <path class="country" data-id="FR" data-name="France" d="M455,175 Q498,162 538,202 Q558,248 535,292 Q492,328 448,332 Q412,318 418,275 Q438,225 465,192 Z"/>
+          <path class="country" data-id="ES" data-name="Spain" d="M428,262 Q478,248 522,295 Q548,348 518,398 Q468,438 418,442 Q378,425 388,375 Q412,318 442,282 Z"/>
+          <path class="country" data-name="Portugal" d="M398,285 Q425,275 442,312 Q445,358 422,398 Q392,425 372,405 Q372,362 388,318 Z"/>
+          <path class="country" data-id="DE" data-name="Germany" d="M488,138 Q532,125 572,172 Q595,225 572,278 Q532,318 488,322 Q455,305 465,258 Q482,202 498,165 Z"/>
+          <path class="country" data-id="PL" data-name="Poland" d="M538,135 Q588,122 632,175 Q658,235 632,298 Q588,348 538,352 Q502,335 518,282 Q545,222 558,172 Z"/>
+          <path class="country" data-id="NL" data-name="Netherlands" d="M468,128 Q498,118 518,152 Q525,188 502,218 Q472,232 455,208 Q455,172 475,148 Z"/>
+          <path class="country" data-name="Belgium" d="M465,212 Q495,202 522,235 Q532,275 508,308 Q478,328 458,305 Q458,265 472,235 Z"/>
+          <path class="country" data-id="CH" data-name="Switzerland" d="M485,282 Q515,272 538,308 Q545,345 522,375 Q492,392 472,372 Q472,335 492,302 Z"/>
+          <path class="country" data-id="IT" data-name="Italy" d="M508,332 Q552,318 588,372 Q615,432 588,488 Q542,532 495,538 Q458,522 472,472 Q498,408 528,362 Z"/>
+          <path class="country" data-name="Greece" d="M558,365 Q605,352 645,408 Q672,472 642,532 Q598,582 548,588 Q518,568 538,518 Q572,455 588,402 Z"/>
+          <path class="country" data-name="Turkey" d="M582,358 Q658,338 732,408 Q785,488 758,572 Q695,642 622,665 Q568,655 585,595 Q632,518 678,448 Z"/>
+
+          <!-- Africa -->
+          <path class="country" data-name="Morocco" d="M432,382 Q485,368 532,422 Q562,485 532,548 Q482,602 422,615 Q382,598 398,542 Q432,478 455,422 Z"/>
+          <path class="country" data-name="Algeria" d="M478,492 Q555,468 625,545 Q672,632 635,722 Q565,798 485,818 Q432,802 458,738 Q512,652 562,572 Z"/>
+          <path class="country" data-name="Libya" d="M548,565 Q632,542 712,625 Q768,722 732,825 Q658,912 572,938 Q512,922 545,852 Q608,758 668,668 Z"/>
+          <path class="country" data-name="Egypt" d="M592,518 Q672,495 748,585 Q808,692 768,808 Q695,905 612,932 Q558,915 588,848 Q658,748 722,652 Z"/>
+
+          <!-- Middle East -->
+          <path class="country" data-name="Saudi Arabia" d="M622,548 Q722,518 818,625 Q888,752 842,888 Q752,1002 648,1042 Q582,1025 618,952 Q702,838 782,728 Z"/>
+          <path class="country" data-name="Iran" d="M672,462 Q772,432 868,545 Q942,682 895,832 Q815,968 712,1012 Q648,995 688,922 Q778,798 858,678 Z"/>
+          <path class="country" data-name="Iraq" d="M638,502 Q728,472 815,582 Q878,712 835,852 Q758,975 665,1015 Q615,998 652,928 Q735,808 812,692 Z"/>
+
+          <!-- Asia -->
+          <path class="country" data-name="Kazakhstan" d="M658,262 Q788,235 908,362 Q998,512 948,678 Q848,828 728,882 Q648,862 695,782 Q788,652 875,528 Z"/>
+          <path class="country" data-id="CN" data-name="China" d="M728,328 Q862,292 988,448 Q1088,638 1042,852 Q948,1058 818,1175 Q688,1268 572,1248 Q512,1218 572,1128 Q702,988 852,858 Z"/>
+          <path class="country" data-name="Mongolia" d="M748,298 Q872,268 988,408 Q1078,578 1025,768 Q932,942 818,1008 Q742,992 792,908 Q898,768 998,632 Z"/>
+          <path class="country" data-id="IN" data-name="India" d="M668,218 Q712,205 752,238 Q782,278 775,325 Q748,368 708,382 Q668,375 658,338 Q658,295 675,258 Z"/>
+          <path class="country" data-id="JP" data-name="Japan" d="M868,168 Q908,155 942,195 Q962,248 948,308 Q912,358 872,372 Q840,362 852,315 Q875,258 895,205 Z"/>
+          <path class="country" data-id="KR" data-name="South Korea" d="M842,195 Q875,185 902,222 Q918,268 898,312 Q865,348 835,355 Q812,342 828,302 Q858,255 878,212 Z"/>
+
+          <!-- Southeast Asia -->
+          <path class="country" data-id="TH" data-name="Thailand" d="M735,262 Q775,248 808,288 Q832,338 815,392 Q778,438 738,452 Q708,442 722,398 Q752,342 772,292 Z"/>
+          <path class="country" data-id="VN" data-name="Vietnam" d="M768,248 Q812,235 852,282 Q882,342 862,408 Q822,465 778,482 Q748,472 765,425 Q798,365 832,308 Z"/>
+          <path class="country" data-id="MY" data-name="Malaysia" d="M748,332 Q792,318 832,365 Q862,425 838,488 Q795,545 748,562 Q718,548 738,502 Q772,448 808,398 Z"/>
+          <path class="country" data-id="ID" data-name="Indonesia" d="M762,378 Q828,358 895,428 Q948,515 915,612 Q855,702 782,738 Q728,722 762,658 Q832,575 898,495 Z"/>
+          <path class="country" data-id="PH" data-name="Philippines" d="M828,268 Q875,252 918,308 Q952,378 925,455 Q878,522 825,548 Q792,535 818,482 Q868,408 912,338 Z"/>
+          <path class="country" data-id="SG" data-name="Singapore" d="M765,355 Q795,345 822,378 Q838,422 815,462 Q782,492 758,478 Q752,445 772,408 Z"/>
+
+          <!-- Oceania -->
+          <path class="country" data-id="AU" data-name="Australia" d="M798,398 Q888,368 978,465 Q1052,588 1015,728 Q938,858 838,918 Q748,948 685,918 Q658,878 712,825 Q812,718 915,618 Z"/>
+          <path class="country" data-name="New Zealand" d="M948,452 Q995,438 1038,498 Q1068,578 1038,665 Q992,742 942,768 Q908,758 935,705 Q982,632 1028,562 Z"/>
+        </g>
+
+        <!-- Markers Layer -->
+        <g class="map-markers" id="mapMarkers"></g>
+      </svg>
+    `;
+
+    // Map State
+    let mapState = {
+      zoom: 1,
+      minZoom: 0.5,
+      maxZoom: 4,
+      panX: 0,
+      panY: 0,
+      isDragging: false,
+      startX: 0,
+      startY: 0,
+      currentRegion: 'world',
+      currentView: 'activations'
+    };
+
+    function initWorldMap() {
+      const container = document.getElementById('worldMap');
+      container.innerHTML = worldMapSVG;
+
+      const svg = document.getElementById('mapSvg');
+      const markersGroup = document.getElementById('mapMarkers');
+      const tooltip = document.getElementById('mapTooltip');
+      const zoomIndicator = document.getElementById('zoomIndicator');
+
+      // Create markers
+      createMarkers(markersGroup);
+
+      // Setup zoom controls
+      setupZoomControls(svg);
+
+      // Setup pan functionality
+      setupPanControls(svg, container);
+
+      // Setup region buttons
+      setupRegionButtons(svg);
+
+      // Setup country hover
+      setupCountryHover(svg, tooltip);
+
+      // Setup marker hover
+      setupMarkerHover(tooltip);
+
+      // Setup scroll wheel zoom
+      container.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.1 : 0.1;
+        updateZoom(svg, delta);
+      });
+
+      // Update zoom indicator
+      updateZoomIndicator();
+    }
+
+    function createMarkers(markersGroup) {
+      const data = mapState.currentView === 'activations'
+        ? mockData.countryActivations
+        : countryWarranties;
+
+      let markersHTML = '';
+      for (const [code, count] of Object.entries(data)) {
+        const country = countryData[code];
+        if (country) {
+          const maxCount = Math.max(...Object.values(data));
+          const intensity = count / maxCount;
+          const baseSize = intensity * 12 + 4;
+          const opacity = intensity * 0.6 + 0.3;
+
+          markersHTML += `
+            <g class="marker" data-country="${code}" data-count="${count}" data-base-size="${baseSize}" data-region="${country.region}">
+              <circle cx="${country.coords[0]}" cy="${country.coords[1]}" r="${baseSize * 2}"
+                      class="marker-glow" style="--marker-opacity: ${opacity}"/>
+              <circle cx="${country.coords[0]}" cy="${country.coords[1]}" r="${baseSize}"
+                      class="marker-core" style="--marker-opacity: ${opacity}"/>
+              <text x="${country.coords[0]}" y="${country.coords[1] - baseSize - 5}"
+                    class="marker-label" text-anchor="middle">${country.flag}</text>
+            </g>
+          `;
+        }
+      }
+      markersGroup.innerHTML = markersHTML;
+    }
+
+    function setupZoomControls(svg) {
+      document.getElementById('zoomIn').addEventListener('click', () => updateZoom(svg, 0.25));
+      document.getElementById('zoomOut').addEventListener('click', () => updateZoom(svg, -0.25));
+      document.getElementById('zoomReset').addEventListener('click', () => resetView(svg));
+    }
+
+    function updateZoom(svg, delta) {
+      const newZoom = Math.max(mapState.minZoom, Math.min(mapState.maxZoom, mapState.zoom + delta));
+      if (newZoom !== mapState.zoom) {
+        mapState.zoom = newZoom;
+        applyTransform(svg);
+        updateZoomIndicator();
+      }
+    }
+
+    function updateZoomIndicator() {
+      const indicator = document.getElementById('zoomIndicator');
+      indicator.textContent = Math.round(mapState.zoom * 100) + '%';
+    }
+
+    function resetView(svg) {
+      mapState.zoom = 1;
+      mapState.panX = 0;
+      mapState.panY = 0;
+      mapState.currentRegion = 'world';
+
+      // Reset region buttons
+      document.querySelectorAll('.region-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.region === 'world');
+      });
+
+      // Animate to default viewBox
+      animateViewBox(svg, regionViewBox.world);
+      updateZoomIndicator();
+    }
+
+    function applyTransform(svg) {
+      const vb = regionViewBox[mapState.currentRegion];
+      const scale = 1 / mapState.zoom;
+      const newWidth = vb.width * scale;
+      const newHeight = vb.height * scale;
+      const newX = vb.x + (vb.width - newWidth) / 2 - mapState.panX * scale;
+      const newY = vb.y + (vb.height - newHeight) / 2 - mapState.panY * scale;
+
+      svg.setAttribute('viewBox', `${newX} ${newY} ${newWidth} ${newHeight}`);
+    }
+
+    function setupPanControls(svg, container) {
+      container.addEventListener('mousedown', (e) => {
+        if (e.button === 0) {
+          mapState.isDragging = true;
+          mapState.startX = e.clientX;
+          mapState.startY = e.clientY;
+          container.style.cursor = 'grabbing';
+        }
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        if (mapState.isDragging) {
+          const dx = (e.clientX - mapState.startX) * 0.5;
+          const dy = (e.clientY - mapState.startY) * 0.5;
+          mapState.panX += dx;
+          mapState.panY += dy;
+          mapState.startX = e.clientX;
+          mapState.startY = e.clientY;
+          applyTransform(svg);
+        }
+      });
+
+      document.addEventListener('mouseup', () => {
+        mapState.isDragging = false;
+        container.style.cursor = 'grab';
+      });
+
+      container.style.cursor = 'grab';
+    }
+
+    function setupRegionButtons(svg) {
+      document.querySelectorAll('.region-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const region = btn.dataset.region;
+          mapState.currentRegion = region;
+          mapState.zoom = 1;
+          mapState.panX = 0;
+          mapState.panY = 0;
+
+          // Update button states
+          document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          // Animate to region
+          animateViewBox(svg, regionViewBox[region]);
+          updateZoomIndicator();
+
+          // Update stats
+          updateRegionStats(region);
+        });
+      });
+    }
+
+    function animateViewBox(svg, targetVB) {
+      const currentVB = svg.getAttribute('viewBox').split(' ').map(Number);
+      const duration = 400;
+      const startTime = performance.now();
+
+      function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3); // easeOutCubic
+
+        const newX = currentVB[0] + (targetVB.x - currentVB[0]) * eased;
+        const newY = currentVB[1] + (targetVB.y - currentVB[1]) * eased;
+        const newW = currentVB[2] + (targetVB.width - currentVB[2]) * eased;
+        const newH = currentVB[3] + (targetVB.height - currentVB[3]) * eased;
+
+        svg.setAttribute('viewBox', `${newX} ${newY} ${newW} ${newH}`);
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    function updateRegionStats(region) {
+      const data = mapState.currentView === 'activations'
+        ? mockData.countryActivations
+        : countryWarranties;
+
+      let total = 0;
+      let countries = 0;
+
+      for (const [code, count] of Object.entries(data)) {
+        const country = countryData[code];
+        if (country && (region === 'world' || country.region === region)) {
+          total += count;
+          countries++;
+        }
+      }
+
+      document.getElementById('statCountries').textContent = countries;
+      document.getElementById('statTotal').textContent = total.toLocaleString();
+    }
+
+    function setupCountryHover(svg, tooltip) {
+      const countries = svg.querySelectorAll('.country');
+
+      countries.forEach(country => {
+        country.addEventListener('mouseenter', (e) => {
+          const id = country.dataset.id;
+          const name = country.dataset.name;
+
+          if (id && countryData[id]) {
+            showTooltip(e, id);
+          }
+
+          country.classList.add('hover');
+        });
+
+        country.addEventListener('mouseleave', () => {
+          hideTooltip();
+          country.classList.remove('hover');
+        });
+
+        country.addEventListener('mousemove', (e) => {
+          moveTooltip(e);
+        });
+      });
+    }
+
+    function setupMarkerHover(tooltip) {
+      document.addEventListener('mouseenter', (e) => {
+        if (e.target.closest('.marker')) {
+          const marker = e.target.closest('.marker');
+          const code = marker.dataset.country;
+          showTooltip(e, code);
+
+          // Enlarge marker
+          const glow = marker.querySelector('.marker-glow');
+          const core = marker.querySelector('.marker-core');
+          const baseSize = parseFloat(marker.dataset.baseSize);
+          glow.setAttribute('r', baseSize * 2.5);
+          core.setAttribute('r', baseSize * 1.3);
+        }
+      }, true);
+
+      document.addEventListener('mouseleave', (e) => {
+        if (e.target.closest('.marker')) {
+          const marker = e.target.closest('.marker');
+          hideTooltip();
+
+          // Reset marker size
+          const glow = marker.querySelector('.marker-glow');
+          const core = marker.querySelector('.marker-core');
+          const baseSize = parseFloat(marker.dataset.baseSize);
+          glow.setAttribute('r', baseSize * 2);
+          core.setAttribute('r', baseSize);
+        }
+      }, true);
+
+      document.addEventListener('mousemove', (e) => {
+        if (e.target.closest('.marker')) {
+          moveTooltip(e);
+        }
+      }, true);
+    }
+
+    function showTooltip(e, countryCode) {
+      const tooltip = document.getElementById('mapTooltip');
+      const country = countryData[countryCode];
+
+      if (country) {
+        document.getElementById('tooltipFlag').textContent = country.flag;
+        document.getElementById('tooltipCountry').textContent = country.name;
+        document.getElementById('tooltipActivations').textContent =
+          (mockData.countryActivations[countryCode] || 0).toLocaleString();
+        document.getElementById('tooltipWarranties').textContent =
+          (countryWarranties[countryCode] || 0).toLocaleString();
+
+        tooltip.classList.add('visible');
+        moveTooltip(e);
+      }
+    }
+
+    function hideTooltip() {
+      const tooltip = document.getElementById('mapTooltip');
+      tooltip.classList.remove('visible');
+    }
+
+    function moveTooltip(e) {
+      const tooltip = document.getElementById('mapTooltip');
+      const container = document.getElementById('worldMap');
+      const rect = container.getBoundingClientRect();
+
+      let x = e.clientX - rect.left + 15;
+      let y = e.clientY - rect.top - 10;
+
+      // Keep tooltip within bounds
+      if (x + 180 > rect.width) x = e.clientX - rect.left - 195;
+      if (y + 100 > rect.height) y = rect.height - 110;
+      if (y < 10) y = 10;
+
+      tooltip.style.left = x + 'px';
+      tooltip.style.top = y + 'px';
+    }
+
+    // View toggle (activations/warranties)
+    document.querySelectorAll('.card-map .card-action-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        mapState.currentView = btn.dataset.view;
+        const markersGroup = document.getElementById('mapMarkers');
+        createMarkers(markersGroup);
+        updateRegionStats(mapState.currentRegion);
+      });
+    });
+
+    // =========================================================================
+    // Charts
+    // =========================================================================
+    let productChart;
+
+    function initCharts() {
+      const colors = getThemeColors();
+
+      // Product Chart (Doughnut)
+      const productCtx = document.getElementById('productChart').getContext('2d');
+      const productColors = [
+        colors.primary,
+        colors.secondary,
+        colors.gradient[2],
+        colors.success,
+        colors.warning
+      ];
+
+      productChart = new Chart(productCtx, {
+        type: 'doughnut',
+        data: {
+          labels: mockData.productData.labels,
+          datasets: [{
+            data: mockData.productData.values,
+            backgroundColor: productColors,
+            borderWidth: 0,
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '70%',
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: '#fff',
+              titleColor: colors.text,
+              bodyColor: colors.textSecondary,
+              borderColor: colors.border,
+              borderWidth: 1,
+              padding: 12,
+              cornerRadius: 8
+            }
+          }
+        }
+      });
+
+      // Generate custom legend
+      const legendContainer = document.getElementById('productLegend');
+      legendContainer.innerHTML = mockData.productData.labels.map((label, i) => `
+        <div class="legend-row">
+          <span class="legend-color" style="background: ${productColors[i]}"></span>
+          <span class="legend-label">${label}</span>
+          <span class="legend-value">${mockData.productData.values[i].toLocaleString()}</span>
+        </div>
+      `).join('');
+    }
+
+    function updateChartsTheme() {
+      const colors = getThemeColors();
+
+      // Update product chart
+      if (productChart) {
+        const productColors = [
+          colors.primary,
+          colors.secondary,
+          colors.gradient[2],
+          colors.success,
+          colors.warning
+        ];
+        productChart.data.datasets[0].backgroundColor = productColors;
+        productChart.update();
+
+        // Update legend colors
+        const legendRows = document.querySelectorAll('#productLegend .legend-color');
+        legendRows.forEach((el, i) => {
+          el.style.background = productColors[i];
+        });
+      }
+
+      // Update map markers
+      initWorldMap();
+    }
+
+    // =========================================================================
+    // Populate Tables & Lists
+    // =========================================================================
+    function populateActivationsTable() {
+      const tbody = document.getElementById('activationsTable');
+      tbody.innerHTML = mockData.activations.map(a => `
+        <tr>
+          <td>
+            <div class="user-cell">
+              <div class="avatar">${a.user.split(' ').map(n => n[0]).join('')}</div>
+              <div class="user-details">
+                <span class="name">${a.user}</span>
+                <span class="email">${a.email}</span>
+              </div>
+            </div>
+          </td>
+          <td>${a.product}</td>
+          <td><span class="serial-number">${a.serial}</span></td>
+          <td>
+            <div class="location-cell">
+              <span class="flag">${getCountryFlag(a.country)}</span>
+              <span>${a.location}</span>
+            </div>
+          </td>
+          <td><span class="time">${a.date}</span></td>
+          <td><span class="status-badge ${a.status}">${a.status}</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function populateWarrantyTimeline() {
+      const container = document.getElementById('warrantyTimeline');
+      container.innerHTML = mockData.warrantyExpiring.map(w => `
+        <div class="timeline-item ${w.daysLeft <= 2 ? 'urgent' : ''}">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-user">${w.user}</span>
+            <span class="timeline-product">${w.product}</span>
+          </div>
+          <span class="timeline-time">${w.expires}</span>
+        </div>
+      `).join('');
+    }
+
+    function populateActivityFeed() {
+      const container = document.getElementById('activityFeed');
+      const iconMap = {
+        check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>',
+        shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+        user: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>',
+        message: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'
+      };
+
+      container.innerHTML = mockData.activities.map(a => `
+        <div class="activity-item">
+          <div class="activity-icon ${a.type}">${iconMap[a.icon]}</div>
+          <div class="activity-content">
+            <p><strong>${a.user}</strong> ${a.action} <strong>${a.target}</strong></p>
+            <span class="activity-time">${a.time}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function getCountryFlag(code) {
+      const flags = {
+        CN: '\u{1F1E8}\u{1F1F3}', US: '\u{1F1FA}\u{1F1F8}', DE: '\u{1F1E9}\u{1F1EA}',
+        JP: '\u{1F1EF}\u{1F1F5}', GB: '\u{1F1EC}\u{1F1E7}', FR: '\u{1F1EB}\u{1F1F7}',
+        KR: '\u{1F1F0}\u{1F1F7}', BR: '\u{1F1E7}\u{1F1F7}'
+      };
+      return flags[code] || '\u{1F30D}';
+    }
+
+    // =========================================================================
+    // Initialize
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      initWorldMap();
+      initCharts();
+      populateActivationsTable();
+      populateWarrantyTimeline();
+      populateActivityFeed();
+    });
+  </script>
+</body>
+</html>
